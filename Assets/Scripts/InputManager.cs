@@ -62,6 +62,7 @@ public class InputManager : MonoBehaviour
 	/// </summary>
 	public bool GetPlayerSprint()
 	{
-		return _playerInput.Player.Sprint.triggered;
+		// activeControl is null while the action in waiting or cancelled
+		return _playerInput.Player.Sprint.activeControl != null;
 	}
 }

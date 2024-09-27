@@ -13,7 +13,7 @@ public class FPSController : MonoBehaviour
 	[SerializeField]
 	private Transform mainCameraTransform;
 	[SerializeField]
-	private float playerSpeed = 2.0f;
+	private float walkSpeed = 2.0f;
 	[SerializeField]
 	private float sprintSpeed = 5.0f;
 	[SerializeField]
@@ -38,10 +38,15 @@ public class FPSController : MonoBehaviour
 
 		// Player movement
 		Vector2 movement = _inputManager.GetPlayerMovement();
+		bool isSprinting = _inputManager.GetPlayerSprint();
+		float playerSpeed = isSprinting ? sprintSpeed : walkSpeed;
+
 		Vector3 move = new Vector3(movement.x, 0, movement.y);
 		move = mainCameraTransform.forward * move.z + mainCameraTransform.right * move.x;
 		move.y = 0f;
 		_playerController.Move(move * Time.deltaTime * playerSpeed);
+
+		Debug.Log(isSprinting + " : " + playerSpeed);
 
 		// Jump
 		if (_inputManager.GetPlayerJump() && _isGrounded)
