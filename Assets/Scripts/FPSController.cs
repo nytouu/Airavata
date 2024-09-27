@@ -46,8 +46,6 @@ public class FPSController : MonoBehaviour
 		move.y = 0f;
 		_playerController.Move(move * Time.deltaTime * playerSpeed);
 
-		Debug.Log(isSprinting + " : " + playerSpeed);
-
 		// Jump
 		if (_inputManager.GetPlayerJump() && _isGrounded)
 		{
