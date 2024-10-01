@@ -7,34 +7,34 @@ public class FPSController : MonoBehaviour
 	private CharacterController _playerController;
 
 	private Vector3 _playerVelocity;
-	private bool _isGrounded;
 	private InputManager _inputManager;
+	private Transform _orientation;
 
-	[SerializeField]
-	private Transform mainCameraTransform;
-	[SerializeField]
-	private float walkSpeed = 2.0f;
-	[SerializeField]
-	private float sprintSpeed = 5.0f;
-	[SerializeField]
-	private float jumpHeight = 1.0f;
-	[SerializeField]
-	private float gravityValue = -9.81f;
+	[SerializeField] private Transform mainCameraTransform;
+	[SerializeField] private float walkSpeed = 2.0f;
+	[SerializeField] private float sprintSpeed = 5.0f;
+	[SerializeField] private float jumpHeight = 1.0f;
+	[SerializeField] private float gravityValue = -9.81f;
 
 	private void Start()
 	{
 		_playerController = GetComponent<CharacterController>();
 		_inputManager = InputManager.Instance;
+		_orientation = new GameObject("Player Orientation").transform;
 	}
 
 	void Update()
 	{
 		// Ground detection using Unity's Character Controller
-		_isGrounded = _playerController.isGrounded;
-		if (_isGrounded && _playerVelocity.y < 0)
+		bool isGrounded = _playerController.isGrounded;
+		if (isGrounded && _playerVelocity.y < 0)
 		{
 			_playerVelocity.y = 0f;
 		}
+
+		// Orientation
+		_orientation.rotation = Quaternion.Euler(0, mainCameraTransform.rotation.eulerAngles.y, 0);
+		Debug.DrawRay(transform.position, _orientation.forward);
 
 		// Player movement
 		Vector2 movement = _inputManager.GetPlayerMovement();
@@ -42,12 +42,12 @@ public class FPSController : MonoBehaviour
 		float playerSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
 		Vector3 move = new Vector3(movement.x, 0, movement.y);
-		move = mainCameraTransform.forward * move.z + mainCameraTransform.right * move.x;
+		move = _orientation.forward * move.z + _orientation.right * move.x;
 		move.y = 0f;
 		_playerController.Move(move * Time.deltaTime * playerSpeed);
 
 		// Jump
-		if (_inputManager.GetPlayerJump() && _isGrounded)
+		if (_inputManager.GetPlayerJump() && isGrounded)
 		{
 			_playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
 		}
