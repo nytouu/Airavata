@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7987345fd3d4ac84c9040fd49c9127d5
+guid: 7e3b88c5e485f524ca2cdcdaf26dd80c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,8 +7,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_Pillar02_Corner
-    second: {fileID: 2100000, guid: 51df28652fec5274bb2450eb148d4e40, type: 2}
+      name: standardSurface1
+    second: {fileID: 2100000, guid: 7fb448dfdabca9d4888e9fa3a76abad6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
