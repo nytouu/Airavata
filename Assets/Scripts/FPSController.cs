@@ -34,7 +34,6 @@ public class FPSController : MonoBehaviour
 
 		// Orientation
 		_orientation.rotation = Quaternion.Euler(0, mainCameraTransform.rotation.eulerAngles.y, 0);
-		Debug.DrawRay(transform.position, _orientation.forward);
 
 		// Player movement
 		Vector2 movement = _inputManager.GetPlayerMovement();
