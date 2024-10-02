@@ -58,6 +58,14 @@ public class InputManager : MonoBehaviour
 	}
 
 	/// <summary>
+	/// Get player jumping input
+	/// </summary>
+	public bool GetPlayerInteraction()
+	{
+		return _playerInput.Player.Interact.triggered;
+	}
+
+	/// <summary>
 	/// Get player sprint input
 	/// </summary>
 	public bool GetPlayerSprint()
