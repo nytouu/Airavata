@@ -38,8 +38,6 @@ public class Highlight : MonoBehaviour
         {
             foreach (var material in materials)
             {
-                //we can just disable the EMISSION
-                //if we don't use emission color anywhere else
                 material.DisableKeyword("_EMISSION");
             }
         }
