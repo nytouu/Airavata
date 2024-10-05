@@ -92,7 +92,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Density: 0.2
+    - _Density: 0.33
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
@@ -102,7 +102,7 @@ Material:
     - _Glossiness: 0
     - _GlossyReflections: 0
     - _Metallic: 0
-    - _Movement_Scale: 2
+    - _Movement_Scale: 10
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -111,11 +111,11 @@ Material:
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
-    - _Speed: 0.2
+    - _Speed: 0.35
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Surface: 0
-    - _Wind_Scale: 4.26
+    - _Wind_Scale: 1.2
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
