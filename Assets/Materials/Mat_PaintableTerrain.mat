@@ -62,16 +62,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainAlbedo:
-        m_Texture: {fileID: 2800000, guid: d32b6cf904f85eb65813b9e18a2fa19c, type: 3}
-        m_Scale: {x: 0.7, y: 0.7}
+        m_Texture: {fileID: 2800000, guid: 4a8d0a21de9ac53c5aa7c88e671f5bc9, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainHeightmap:
-        m_Texture: {fileID: 2800000, guid: ce6e7e36f5aff342482fde3e363dc7df, type: 3}
-        m_Scale: {x: 0.7, y: 0.7}
+        m_Texture: {fileID: 2800000, guid: ceb20cfe3464f1b2398afb6d99311dcf, type: 3}
+        m_Scale: {x: 1, y: 0.36}
         m_Offset: {x: 0, y: 0}
     - _MainNormal:
-        m_Texture: {fileID: 2800000, guid: 5b5229f3550d95cfeb0298310a79267e, type: 3}
-        m_Scale: {x: 0.7, y: 2}
+        m_Texture: {fileID: 2800000, guid: ba50b08b20f935255a71235d32b397e2, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
@@ -90,16 +90,16 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondAlbedo:
-        m_Texture: {fileID: 2800000, guid: 74854ce4a40283e459eb3115adc34c6d, type: 3}
-        m_Scale: {x: 0.7, y: 0.7}
+        m_Texture: {fileID: 2800000, guid: 43f78435e9d134153ba4d80b96615e3d, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SecondHeightmap:
-        m_Texture: {fileID: 2800000, guid: 5204eaaba4d1b153aaae039fa7b35ee0, type: 3}
-        m_Scale: {x: 0.7, y: 0.7}
+        m_Texture: {fileID: 2800000, guid: fc1583c8253e69b4fa0a1d46b223ecf2, type: 3}
+        m_Scale: {x: 0.5, y: 0.5}
         m_Offset: {x: 0, y: 0}
     - _SecondNormal:
-        m_Texture: {fileID: 2800000, guid: 3ac9623a24668aa75bbbe43388851a39, type: 3}
-        m_Scale: {x: 0.7, y: 0.7}
+        m_Texture: {fileID: 2800000, guid: ef26443c5e832aa809122a053b32f0ba, type: 3}
+        m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
@@ -139,10 +139,10 @@ Material:
     - _GlossyReflections: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _POM_Amplitude: 8
+    - _POM_Amplitude: 6
     - _POM_Distance_Cutoff: 0.1
     - _POM_Distance_Power: 3
-    - _POM_Max_Samples: 128
+    - _POM_Max_Samples: 64
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
