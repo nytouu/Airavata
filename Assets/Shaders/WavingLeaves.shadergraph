@@ -490,6 +490,20 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.ShaderGraph.BooleanMaterialSlot",
+    "m_ObjectId": "2e659c50d8844d239492cf93a342698d",
+    "m_Id": -1476438184,
+    "m_DisplayName": "Vertical Displacement",
+    "m_SlotType": 0,
+    "m_Hidden": false,
+    "m_ShaderOutputName": "_Vertical_Displacement",
+    "m_StageCapability": 3,
+    "m_Value": false,
+    "m_DefaultValue": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.NormalMaterialSlot",
     "m_ObjectId": "303f268d07ca4def809e42e57462b708",
     "m_Id": 0,
@@ -639,6 +653,9 @@
     },
     "m_Slots": [
         {
+            "m_Id": "2e659c50d8844d239492cf93a342698d"
+        },
+        {
             "m_Id": "5314c62349d44a6994b140360ec6e0e0"
         },
         {
@@ -671,14 +688,16 @@
         "ee927ab7-fe57-4a72-92cc-ed61d29f4dfe",
         "12f24144-4cfc-4e27-8eea-fa92f4397a58",
         "5640119b-9f44-439e-be75-9200c6f42947",
-        "aa92d927-5cd5-466d-8fa9-c2784a2e4abb"
+        "aa92d927-5cd5-466d-8fa9-c2784a2e4abb",
+        "556271b0-b2f6-4c36-82b2-f6ac9c265d12"
     ],
     "m_PropertyIds": [
         638433496,
         994105248,
         -1772757310,
         1382354855,
-        796328503
+        796328503,
+        -1476438184
     ],
     "m_Dropdowns": [],
     "m_DropdownSelectedEntries": []
