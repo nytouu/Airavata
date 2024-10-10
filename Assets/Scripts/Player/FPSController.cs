@@ -11,15 +11,15 @@ public class FPSController : MonoBehaviour
 	private Transform _orientation;
 
 	[SerializeField] private Transform mainCameraTransform;
-	[SerializeField] private float walkSpeed = 2.0f;
-	[SerializeField] private float sprintSpeed = 5.0f;
-	[SerializeField] private float jumpHeight = 1.0f;
-	[SerializeField] private float gravityValue = -9.81f;
+	[SerializeField][Range(0.1f, 10f)] private float walkSpeed = 2.0f;
+	[SerializeField][Range(2f, 20f)] private float sprintSpeed = 5.0f;
+	[SerializeField][Range(0.2f, 2f)] private float jumpHeight = 1.0f;
+	[SerializeField][Range(-4f, -20f)] private float gravityValue = -9.81f;
 
 	private void Start()
 	{
 		_playerController = GetComponent<CharacterController>();
-		_inputManager = InputManager.Instance;
+		_inputManager = GameManager.GetManager<InputManager>();
 		_orientation = new GameObject("Player Orientation").transform;
 	}
 

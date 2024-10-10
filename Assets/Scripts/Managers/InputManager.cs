@@ -1,22 +1,11 @@
 using UnityEngine;
 
-/// <summary>
-/// Input manager manages the player input, it is a singleton.
-/// </summary>
-public class InputManager : MonoBehaviour
+public class InputManager : Manager
 {
 	private PlayerInput _playerInput;
 
-	private static InputManager _instance;
-	public static InputManager Instance { get => _instance; }
-
 	private void Awake()
 	{
-		if (_instance != null && _instance != this)
-			Destroy(this.gameObject);
-		else
-			_instance = this;
-
 		_playerInput = new PlayerInput();
 
 		Cursor.visible = false;

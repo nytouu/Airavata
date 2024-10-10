@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 
-public class RandomEventsManager : MonoBehaviour
+public class RandomEventsManager : Manager
 {
 	[SerializeField]
 	private UnityEvent onEventTrigger;
