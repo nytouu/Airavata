@@ -9,10 +9,9 @@ public class Eye : MonoBehaviour
     private List<Object> hiddens;
     private List<Object> visible;
     private UniversalAdditionalCameraData cameraData;
-
     void Start()
     {
-        hiddens = Resources.FindObjectsOfTypeAll(typeof (Hidden)).ToList();
+        hiddens = Resources.FindObjectsOfTypeAll(typeof(Hidden)).ToList();
         visible = Resources.FindObjectsOfTypeAll(typeof(Show)).ToList();
         cameraData = this.GetComponent<UniversalAdditionalCameraData>();
     }
@@ -21,29 +20,39 @@ public class Eye : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Mouse1))
         {
-            cameraData.renderPostProcessing = true;
-            foreach (Hidden item in hiddens)
-            {
-                item.gameObject.SetActive(true);
-            }
-
-            foreach (Show item in visible)
-            {
-                item.gameObject.SetActive(false);
-            }
+            EyeActivate();
         }
-        else
+        else if (Input.GetMouseButtonUp(1))
         {
-            cameraData.renderPostProcessing = false;
-            foreach (Hidden item in hiddens)
-            {
-                item.gameObject.SetActive(false);
-            }
+            EyeDeactivate();
+        }
+    }
 
-            foreach (Show item in visible)
-            {
-                item.gameObject.SetActive(true);
-            }
+    public void EyeActivate()
+    {
+        cameraData.renderPostProcessing = true;
+        foreach (Hidden item in hiddens)
+        {
+            item.gameObject.SetActive(true);
+        }
+
+        foreach (Show item in visible)
+        {
+            item.gameObject.SetActive(false);
+        }
+    }
+
+    public void EyeDeactivate()
+    {
+        cameraData.renderPostProcessing = false;
+        foreach (Hidden item in hiddens)
+        {
+            item.gameObject.SetActive(false);
+        }
+
+        foreach (Show item in visible)
+        {
+            item.gameObject.SetActive(true);
         }
     }
 }
