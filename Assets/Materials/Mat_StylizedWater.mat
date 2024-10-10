@@ -60,11 +60,11 @@ Material:
     - _Foam_Speed: 0.5
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Refraction_Scale: 0.1
-    - _Refraction_Speed: 0.1
-    - _Refraction_Strength: 0.02
-    - _Water_Depth: 2.68
-    - _Wave_Scale: 10
+    - _Refraction_Scale: 0.058
+    - _Refraction_Speed: -0.11
+    - _Refraction_Strength: 0.049
+    - _Water_Depth: 3.06
+    - _Wave_Scale: 8
     m_Colors:
     - _Deep_Water_Color: {r: 0.27233893, g: 0.4452643, b: 0.5660378, a: 0.36078432}
     - _Foam_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -83,7 +83,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Main_Heightmap:
         m_Texture: {fileID: 2800000, guid: cbf74c8888cb1fea1a6a72522bdda261, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _Main_Normal:
         m_Texture: {fileID: 2800000, guid: ba50b08b20f935255a71235d32b397e2, type: 3}
@@ -119,7 +119,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Second_Heightmap:
         m_Texture: {fileID: 2800000, guid: fc1583c8253e69b4fa0a1d46b223ecf2, type: 3}
-        m_Scale: {x: 0.5, y: 0.5}
+        m_Scale: {x: 0.2, y: 0.2}
         m_Offset: {x: 0, y: 0}
     - _Second_Normal:
         m_Texture: {fileID: 2800000, guid: ef26443c5e832aa809122a053b32f0ba, type: 3}
@@ -165,14 +165,16 @@ Material:
     - _Main_Smoothness: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _POM_Amplitude: 8
+    - _POM_Amplitude: 3
     - _POM_Distance_Cutoff: 0.1
     - _POM_Distance_Power: 3
-    - _POM_Max_Samples: 128
+    - _POM_Max_Samples: 64
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _Render_Depth_Only: 1
+    - _Render_Depth_Test: 0
     - _Second_Metallic: 0
     - _Second_Smoothness: 0.45
     - _Smoothness: 0.4

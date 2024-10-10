@@ -124,8 +124,8 @@ Material:
     - _CameraFadingEnabled: 0
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 0
-    - _Camera_Depth_Fade_Offset: 0
-    - _Camera_Depth_Fade_Range: 10.7
+    - _Camera_Depth_Fade_Offset: 8.1
+    - _Camera_Depth_Fade_Range: 4.2
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -151,7 +151,7 @@ Material:
     - _Metallic: 0
     - _Mode: 2
     - _OcclusionStrength: 1
-    - _Opacity: 0.2
+    - _Opacity: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -167,7 +167,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _Surface_Depth_Factor: 0
-    - _Surface_Depth_Fade: 0.007
+    - _Surface_Depth_Fade: 0.0028
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
