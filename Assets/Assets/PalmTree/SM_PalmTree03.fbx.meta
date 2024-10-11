@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a4cde92e833d9314cb99559cd32980bf
+guid: efda669999024df46b2ba66a88283fd7
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_PalmTree_Bark2
-    second: {fileID: 2100000, guid: f3a090ac71415bd49957ad92217ffe81, type: 2}
+    second: {fileID: 2100000, guid: f1de636d6727b96489e6d0cc463ba7de, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
