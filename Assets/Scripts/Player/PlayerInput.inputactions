@@ -49,6 +49,24 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Rise",
+                    "type": "Value",
+                    "id": "ca8bf2d4-6967-4830-8dff-cb8690cccecf",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Descend",
+                    "type": "Value",
+                    "id": "6c5571d3-f06c-4e92-bf0f-c5e51ee1ba1d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
                 }
             ],
             "bindings": [
@@ -175,8 +193,8 @@
                 },
                 {
                     "name": "",
-                    "id": "318bfc28-3f8b-439f-ab95-ab3fe9e59838",
-                    "path": "<Gamepad>/leftTrigger",
+                    "id": "11653549-0190-44ef-ac10-2b0596a06965",
+                    "path": "<Keyboard>/shift",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -186,8 +204,8 @@
                 },
                 {
                     "name": "",
-                    "id": "11653549-0190-44ef-ac10-2b0596a06965",
-                    "path": "<Keyboard>/shift",
+                    "id": "665071a2-6d77-42df-8be7-50a52e90b097",
+                    "path": "<Gamepad>/leftTrigger",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -214,6 +232,50 @@
                     "processors": "",
                     "groups": "",
                     "action": "Interact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "e34c19ed-8834-40e4-bc96-41310e65fa6f",
+                    "path": "<Keyboard>/space",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "afba19fb-738b-4829-85a9-0081a07f3019",
+                    "path": "<Gamepad>/buttonSouth",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Rise",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8796845c-a301-4d81-8b3a-971e37223113",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Descend",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "318bfc28-3f8b-439f-ab95-ab3fe9e59838",
+                    "path": "<Gamepad>/rightTrigger",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Descend",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

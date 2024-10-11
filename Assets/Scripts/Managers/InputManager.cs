@@ -62,4 +62,21 @@ public class InputManager : Manager
 		// activeControl is null while the action in waiting or cancelled
 		return _playerInput.Player.Sprint.activeControl != null;
 	}
+
+
+	/// <summary>
+	/// Get player rising input
+	/// </summary>
+	public float GetPlayerRise()
+	{
+		return _playerInput.Player.Rise.ReadValue<float>();
+	}
+
+	/// <summary>
+	/// Get player rising input
+	/// </summary>
+	public float GetPlayerDescend()
+	{
+		return _playerInput.Player.Descend.ReadValue<float>();
+	}
 }
