@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cb32b17f1f9b3264da816e58094ec4e2
+guid: 1f35d2ddda081744a925d7acf3bd8a27
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_Window002
-    second: {fileID: 2100000, guid: 6d30c1857ee4e6846bac1e1787ec319b, type: 2}
+    second: {fileID: 2100000, guid: ba91c1b5a7ccc43469a0076a46be5540, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

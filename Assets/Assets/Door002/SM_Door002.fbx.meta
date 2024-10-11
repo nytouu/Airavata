@@ -1,18 +1,13 @@
 fileFormatVersion: 2
-guid: d39b11fe0d7a2be4dbdda73c767f8a52
+guid: 590d2a059a90986498f9d23934ca17d4
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_Door002
-    second: {fileID: 2100000, guid: a45a99269313fd7499431374e90d1a42, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 2
+    materialSearch: 1
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
@@ -42,7 +37,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
