@@ -3,11 +3,16 @@ guid: a01ea43c2ab65a741a37dfb42a0b65cb
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Railing002
+    second: {fileID: 2100000, guid: bad93bf91941b4747bc11b9b43d7fd58, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
