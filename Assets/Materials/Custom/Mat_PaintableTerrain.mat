@@ -181,7 +181,7 @@ Material:
     - _Main_Smoothness: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _POM_Amplitude: 1.73
+    - _POM_Amplitude: 2.43
     - _POM_Distance_Cutoff: 0.08
     - _POM_Distance_Power: 0.71
     - _POM_Max_Samples: 32
