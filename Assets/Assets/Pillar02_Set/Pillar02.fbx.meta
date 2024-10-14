@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e622d19b9aa3df94896e79dece859670
+guid: 04e8b62add6b63a4da1f06f482da566c
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,17 +7,12 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: M_PalmTree_Bark2
-    second: {fileID: 2100000, guid: f3a090ac71415bd49957ad92217ffe81, type: 2}
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: M_PalmTree_Leaves
-    second: {fileID: 2100000, guid: 4919582be6d16e015924068ec064d782, type: 2}
+      name: M_Pillar02_Base
+    second: {fileID: 2100000, guid: 56f67d92dcfc43b4a99cef32f5b2c19a, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
-    materialSearch: 1
+    materialSearch: 2
     materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
