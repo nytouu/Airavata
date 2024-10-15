@@ -9,6 +9,10 @@ public class Eye : MonoBehaviour
     private List<Object> hiddens;
     private List<Object> visible;
     private UniversalAdditionalCameraData cameraData;
+    private UniversalRenderPipeline urp;
+
+    [SerializeField] private Material seeThoughMaterial;
+    [SerializeField] private Material regularMaterial;
     void Start()
     {
         hiddens = Resources.FindObjectsOfTypeAll(typeof(Hidden)).ToList();
@@ -34,20 +38,22 @@ public class Eye : MonoBehaviour
         foreach (Hidden item in hiddens)
         {
             item.gameObject.SetActive(true);
+            item.gameObject.GetComponent<MeshRenderer>().material = seeThoughMaterial;
         }
 
         foreach (Show item in visible)
         {
             item.gameObject.SetActive(false);
         }
-    }
 
+    }
     public void EyeDeactivate()
     {
         cameraData.renderPostProcessing = false;
         foreach (Hidden item in hiddens)
         {
             item.gameObject.SetActive(false);
+            item.gameObject.GetComponent<MeshRenderer>().material = regularMaterial;
         }
 
         foreach (Show item in visible)

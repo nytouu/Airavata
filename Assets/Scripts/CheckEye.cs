@@ -8,8 +8,7 @@ public class CheckEye : MonoBehaviour
     public List<int> code;
     public List<int> codeTry;
     public GameObject door;
-    public string codestr;
-    public string codeTrystr;
+    public bool open = false;
     void Start()
     {
         code = new List<int> {1, 2, 3, 1};
@@ -19,7 +18,7 @@ public class CheckEye : MonoBehaviour
     {
         if(codeTry.SequenceEqual(code))
         {
-            print("orange");
+            open = true;
             door.transform.position = new Vector3(door.transform.position.x, door.transform.position.y + 50, door.transform.position.z);
         }
     }
