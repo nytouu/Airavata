@@ -7,21 +7,22 @@ public class Interaction : MonoBehaviour
 
 	private InputManager _inputManager;
 	private RaycastHit _hit;
-	private float _rangeInteraction = 3f;
+
+	[SerializeField][Range(1f, 6f)] private float _rangeInteraction = 3f;
 
 	private GameObject _lastObject;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		_inputManager = InputManager.Instance;
+		_inputManager = GameManager.GetManager<InputManager>();
 	}
 
 	// Update is called once per frame
-	void Update()
+	void FixedUpdate()
 	{
 		bool isInteracting = _inputManager.GetPlayerInteraction();
-		
+
 		float viewportCenterX = Screen.width / 2f;
 		float viewportCenterY = Screen.height / 2f;
 
@@ -29,17 +30,17 @@ public class Interaction : MonoBehaviour
 
 		if (Physics.Raycast(ray, out _hit, _rangeInteraction))
 		{
-			_hit.collider.gameObject.GetComponent<Highlight>()?.ToggleHighlight(true);
+			_hit.collider.gameObject.GetComponent<Interactible>()?.SetHighlight(true);
 			_lastObject = _hit.collider.gameObject;
-			
+
 			if (isInteracting)
 			{
 				_hit.collider.gameObject.GetComponent<Interactible>()?.Interact();
 			}
-        }
-		else if (_lastObject != null) {
-			_lastObject.GetComponent<Highlight>()?.ToggleHighlight(false);
 		}
-		
+		else
+		{
+			_lastObject?.GetComponent<Interactible>()?.SetHighlight(false);
+		}
 	}
 }

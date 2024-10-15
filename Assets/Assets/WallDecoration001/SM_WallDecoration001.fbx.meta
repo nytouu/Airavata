@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1cf9733340473d64688b7f68d3a12320
+guid: c565d39759f6a454e9cd9cb25171ee69
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -8,7 +8,7 @@ ModelImporter:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
       name: M_WallDecoration001
-    second: {fileID: 2100000, guid: f24b3640813df3f4baaf568d7f63d6f8, type: 2}
+    second: {fileID: 2100000, guid: 416880fc44bfe454296cdb3093c4e628, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -42,7 +42,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
