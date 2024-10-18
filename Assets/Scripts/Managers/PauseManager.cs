@@ -1,17 +1,21 @@
 using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class PauseManager : Manager
 {
+	public const int PAUSE_LAYER = 8;
+
+	[SerializeField] private Camera mainCamera;
 	[SerializeField] private GameObject pauseMenu;
-	[SerializeField] private CinemachineInputProvider _playerCamera;
+	[SerializeField] private CinemachineInputProvider playerCamera;
+
+	[SerializeField] private Image image;
 
 	[Tooltip("Building that will be shown in the main menu background.")]
 	[SerializeField] private GameObject backgroundBuildingPrefab;
-	#nullable enable
-	private GameObject? _backgroundBuildingInstance;
-	#nullable disable
+	private GameObject _backgroundBuildingInstance;
 
 	[ShowOnly][SerializeField] private static bool _isPaused;
 	public static bool IsPaused => _isPaused;
@@ -19,13 +23,19 @@ public class PauseManager : Manager
 	private InputManager _inputManager;
 	private InputActionReference _inputAction;
 
+	private RenderTexture _lastFrameRenderedTexture;
+
+	private SaveLastFrame _frameSaver;
+
 	// Start is called before the first frame update
 	void Start()
 	{
-		_inputAction = _playerCamera.XYAxis;
-		_inputManager = GameManager.GetManager<InputManager>();
+		_frameSaver = gameObject.AddComponent<SaveLastFrame>();
+		_frameSaver.mainCamera = mainCamera;
+		_frameSaver.renderTexture = _lastFrameRenderedTexture;
 
-		pauseMenu.SetActive(false);
+		_inputAction = playerCamera.XYAxis;
+		_inputManager = GameManager.GetManager<InputManager>();
 	}
 
 	// Update is called once per frame
@@ -46,30 +56,48 @@ public class PauseManager : Manager
 
 	public void PauseGame()
 	{
-		_isPaused = true;
-		pauseMenu.SetActive(true);
-		Time.timeScale = 0f;
+		// Pause only after snapshot was taken.
+		_frameSaver.GetLastFrame(texture => {
+			ApplySavedFrameToMenuBackground(texture);
 
-		Cursor.visible = true;
-		Cursor.lockState = CursorLockMode.None;
+			_isPaused = true;
+			Time.timeScale = 0f;
 
-		_playerCamera.XYAxis = null;
+			Cursor.visible = true;
+			Cursor.lockState = CursorLockMode.None;
 
-		_backgroundBuildingInstance = Instantiate(backgroundBuildingPrefab);
+			playerCamera.XYAxis = null;
+
+			_backgroundBuildingInstance = Instantiate(backgroundBuildingPrefab);
+			_backgroundBuildingInstance.layer = PAUSE_LAYER;
+
+			mainCamera.gameObject.SetActive(false);
+
+			pauseMenu.SetActive(true);
+		});
 	}
 
 	public void ResumeGame()
 	{
 		_isPaused = false;
-		pauseMenu.SetActive(false);
 		Time.timeScale = 1f;
 
 		Cursor.visible = false;
 		Cursor.lockState = CursorLockMode.Locked;
 
-		_playerCamera.XYAxis = _inputAction;
+		playerCamera.XYAxis = _inputAction;
 
 		Destroy(_backgroundBuildingInstance);
-		_backgroundBuildingInstance = null;
+		mainCamera.gameObject.SetActive(true);
+
+		pauseMenu.SetActive(false);
+	}
+
+	private void ApplySavedFrameToMenuBackground(Texture2D texture)
+	{
+		if (image.sprite)
+			Destroy(image.sprite);
+	
+		image.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
 	}
 }
