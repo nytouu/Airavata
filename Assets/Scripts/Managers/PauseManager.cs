@@ -13,6 +13,8 @@ public class PauseManager : Manager
 
 	[SerializeField] private Image image;
 
+	[SerializeField] private GameObject gameCrosshair;
+
 	[Tooltip("Building that will be shown in the main menu background.")]
 	[SerializeField] private GameObject backgroundBuildingPrefab;
 	private GameObject _backgroundBuildingInstance;
@@ -56,6 +58,8 @@ public class PauseManager : Manager
 
 	public void PauseGame()
 	{
+		gameCrosshair.SetActive(false);
+		
 		// Pause only after snapshot was taken.
 		_frameSaver.GetLastFrame(texture => {
 			ApplySavedFrameToMenuBackground(texture);
@@ -79,6 +83,8 @@ public class PauseManager : Manager
 
 	public void ResumeGame()
 	{
+		gameCrosshair.SetActive(true);
+
 		_isPaused = false;
 		Time.timeScale = 1f;
 
