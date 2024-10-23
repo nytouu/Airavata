@@ -9,6 +9,11 @@ public class FPSController : MonoBehaviour
 	private Vector3 _playerVelocity;
 	private InputManager _inputManager;
 	private Transform _orientation;
+	private Vector3 _movement;
+	private bool _isGrounded;
+
+	public bool IsGrounded => _isGrounded;
+	public Vector3 Movement => new Vector3(_movement.x, _playerVelocity.y, _movement.z);
 
 	[SerializeField] private Transform mainCameraTransform;
 	[SerializeField][Range(0.1f, 10f)] private float walkSpeed = 2.0f;
@@ -25,9 +30,9 @@ public class FPSController : MonoBehaviour
 
 	void Update()
 	{
+		_isGrounded = _playerController.isGrounded;
 		// Ground detection using Unity's Character Controller
-		bool isGrounded = _playerController.isGrounded;
-		if (isGrounded && _playerVelocity.y < 0)
+		if (_isGrounded && _playerVelocity.y < 0f)
 		{
 			_playerVelocity.y = 0f;
 		}
@@ -40,13 +45,13 @@ public class FPSController : MonoBehaviour
 		bool isSprinting = _inputManager.GetPlayerSprint();
 		float playerSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
-		Vector3 move = new Vector3(movement.x, 0, movement.y);
-		move = _orientation.forward * move.z + _orientation.right * move.x;
-		move.y = 0f;
-		_playerController.Move(move * Time.deltaTime * playerSpeed);
+		_movement = new Vector3(movement.x, 0, movement.y);
+		_movement = _orientation.forward * _movement.z + _orientation.right * _movement.x;
+		_movement.y = 0f;
+		_playerController.Move(_movement * Time.deltaTime * playerSpeed);
 
 		// Jump
-		if (_inputManager.GetPlayerJump() && isGrounded)
+		if (_inputManager.GetPlayerJump() && _isGrounded)
 		{
 			_playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
 		}

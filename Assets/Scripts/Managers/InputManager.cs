@@ -27,23 +27,32 @@ public class InputManager : Manager
 	/// </summary>
 	public Vector2 GetPlayerMovement()
 	{
-		return _playerInput.Player.Movement.ReadValue<Vector2>();
+		if (!PauseManager.IsPaused)
+			return _playerInput.Player.Movement.ReadValue<Vector2>();
+		else
+			return new Vector2(0f, 0f);
 	}
 
-	/// <summary>
-	/// Get the player look delta input
-	/// </summary>
-	public Vector2 GetPlayerLook()
-	{
-		return _playerInput.Player.Look.ReadValue<Vector2>();
-	}
+	/* /// <summary> */
+	/* /// Get the player look delta input */
+	/* /// </summary> */
+	/* public Vector2 GetPlayerLook() */
+	/* { */
+	/* 	if (!PauseManager.IsPaused) */
+	/* 		return _playerInput.Player.Look.ReadValue<Vector2>(); */
+	/* 	else */
+	/* 		return new Vector2(0f, 0f); */
+	/* } */
 
 	/// <summary>
 	/// Get player jumping input
 	/// </summary>
 	public bool GetPlayerJump()
 	{
-		return _playerInput.Player.Jump.triggered;
+		if (!PauseManager.IsPaused)
+			return _playerInput.Player.Jump.triggered;
+		else
+			return false;
 	}
 
 	/// <summary>
@@ -51,7 +60,10 @@ public class InputManager : Manager
 	/// </summary>
 	public bool GetPlayerInteraction()
 	{
-		return _playerInput.Player.Interact.triggered;
+		if (!PauseManager.IsPaused)
+			return _playerInput.Player.Interact.triggered;
+		else
+			return false;
 	}
 
 	/// <summary>
@@ -59,8 +71,11 @@ public class InputManager : Manager
 	/// </summary>
 	public bool GetPlayerSprint()
 	{
-		// activeControl is null while the action in waiting or cancelled
-		return _playerInput.Player.Sprint.activeControl != null;
+		if (!PauseManager.IsPaused)
+			// activeControl is null while the action in waiting or cancelled
+			return _playerInput.Player.Sprint.activeControl != null;
+		else
+			return false;
 	}
 
 
@@ -69,7 +84,10 @@ public class InputManager : Manager
 	/// </summary>
 	public float GetPlayerRise()
 	{
-		return _playerInput.Player.Rise.ReadValue<float>();
+		if (!PauseManager.IsPaused)
+			return _playerInput.Player.Rise.ReadValue<float>();
+		else
+			return 0f;
 	}
 
 	/// <summary>
@@ -77,6 +95,21 @@ public class InputManager : Manager
 	/// </summary>
 	public float GetPlayerDescend()
 	{
-		return _playerInput.Player.Descend.ReadValue<float>();
+		if (!PauseManager.IsPaused)
+		{
+			return _playerInput.Player.Descend.ReadValue<float>();
+		}
+		else
+		{
+			return 0f;
+		}
+	}
+
+	/// <summary>
+	/// Get pause button
+	/// </summary>
+	public bool GetPause()
+	{
+		return _playerInput.Player.Pause.triggered;
 	}
 }

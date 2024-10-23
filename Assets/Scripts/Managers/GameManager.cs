@@ -7,7 +7,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
 	private static GameManager _instance;
-	public static GameManager Instance { get => _instance; }
+	public static GameManager Instance => _instance;
 
 	private List<Manager> managers;
 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
 		{
 			if (manager.GetType() == typeof(T))
 			{
-				return (T)manager;
+				return manager as T;
 			}
 		}
 		return null;
