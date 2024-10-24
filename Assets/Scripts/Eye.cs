@@ -1,23 +1,26 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class Eye : MonoBehaviour
-//Script à poser sur le player
+//Script Ã  poser sur le player
 {
-    private List<Object> hiddens;
-    private List<Object> visible;
-    private UniversalAdditionalCameraData cameraData;
-    private UniversalRenderPipeline urp;
+    private Hidden _hiddens;
+    private Show _visible;
+    private UniversalAdditionalCameraData _cameraData;
+    private UniversalRenderPipeline _urp;
+    private CharacterController _player;
 
-    [SerializeField] private Material seeThoughMaterial;
-    [SerializeField] private Material regularMaterial;
     void Start()
     {
-        hiddens = Resources.FindObjectsOfTypeAll(typeof(Hidden)).ToList();
-        visible = Resources.FindObjectsOfTypeAll(typeof(Show)).ToList();
-        cameraData = this.GetComponent<UniversalAdditionalCameraData>();
+        _hiddens = FindFirstObjectByType<Hidden>();
+        _visible = FindFirstObjectByType<Show>();
+        _cameraData = this.GetComponent<UniversalAdditionalCameraData>();
+        _player = FindFirstObjectByType<CharacterController>();
     }
     // Update is called once per frame
     void Update()
@@ -31,34 +34,41 @@ public class Eye : MonoBehaviour
             EyeDeactivate();
         }
     }
-
+    
     public void EyeActivate()
     {
-        cameraData.renderPostProcessing = true;
-        foreach (Hidden item in hiddens)
+        _cameraData.renderPostProcessing = true;
+        foreach (Transform childTransform in _hiddens.transform)
         {
-            item.gameObject.SetActive(true);
-            item.gameObject.GetComponent<MeshRenderer>().material = seeThoughMaterial;
+            if (childTransform.position.x >= _player.transform.position.x-20 && childTransform.position.x <= _player.transform.position.x+20 &&
+                childTransform.position.z >= _player.transform.position.z-20 && childTransform.position.z <= _player.transform.position.z+20)
+            {
+                childTransform.gameObject.SetActive(true);
+            }
         }
 
-        foreach (Show item in visible)
+        foreach (Transform childTransform in _visible.transform)
         {
-            item.gameObject.SetActive(false);
+            if (childTransform.position.x >= _player.transform.position.x-20 && childTransform.position.x <= _player.transform.position.x+20 &&
+                childTransform.position.z >= _player.transform.position.z-20 && childTransform.position.z <= _player.transform.position.z+20)
+            {
+                childTransform.gameObject.SetActive(false);
+            }
         }
 
     }
+
     public void EyeDeactivate()
     {
-        cameraData.renderPostProcessing = false;
-        foreach (Hidden item in hiddens)
+        _cameraData.renderPostProcessing = false;
+        foreach (Transform childTransform in _hiddens.transform)
         {
-            item.gameObject.SetActive(false);
-            item.gameObject.GetComponent<MeshRenderer>().material = regularMaterial;
+            childTransform.gameObject.SetActive(false);
         }
 
-        foreach (Show item in visible)
+        foreach (Transform childTransform in _visible.transform)
         {
-            item.gameObject.SetActive(true);
+            childTransform.gameObject.SetActive(true);
         }
     }
 }

@@ -5,20 +5,20 @@ using UnityEngine;
 public abstract class Interactible : MonoBehaviour
 {
     [SerializeField]
-    private Color highlightColor = new Color(255, 0, 70, 64);
+    private Color highlightColor = new Color32(70, 70, 70, 255);
 
-	private List<Material> materials;
-	private List<Renderer> renderers;
+	private List<Material> _materials;
+	private List<Renderer> _renderers;
 
 	// Gets all the materials from each renderer
 	private void Awake()
 	{
-		renderers = new List<Renderer>(GetComponents<Renderer>());
+		_renderers = new List<Renderer>(GetComponents<Renderer>());
 
-		materials = new List<Material>();
-		foreach (var renderer in renderers)
+		_materials = new List<Material>();
+		foreach (Renderer renderer in _renderers)
 		{
-			materials.AddRange(new List<Material>(renderer.materials));
+			_materials.AddRange(new List<Material>(renderer.materials));
 		}
 	}
 
@@ -31,7 +31,7 @@ public abstract class Interactible : MonoBehaviour
 	{
 		if (val)
 		{
-			foreach (var material in materials)
+			foreach (var material in _materials)
 			{
 				material.EnableKeyword("_EMISSION");
 				material.SetColor("_EmissionColor", highlightColor);
@@ -39,7 +39,7 @@ public abstract class Interactible : MonoBehaviour
 		}
 		else
 		{
-			foreach (var material in materials)
+			foreach (var material in _materials)
 			{
 				material.DisableKeyword("_EMISSION");
 			}

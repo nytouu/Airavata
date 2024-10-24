@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Interaction : MonoBehaviour
 {
@@ -8,7 +10,7 @@ public class Interaction : MonoBehaviour
 	private InputManager _inputManager;
 	private RaycastHit _hit;
 
-	[SerializeField][Range(1f, 6f)] private float _rangeInteraction = 3f;
+	[SerializeField][Range(1f, 6f)] private float rangeInteraction = 3f;
 
 	private GameObject _lastObject;
 
@@ -19,7 +21,7 @@ public class Interaction : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void FixedUpdate()
+	void Update()
 	{
 		bool isInteracting = _inputManager.GetPlayerInteraction();
 
@@ -28,14 +30,15 @@ public class Interaction : MonoBehaviour
 
 		Ray ray = playerCamera.ScreenPointToRay(new Vector3(viewportCenterX, viewportCenterY, 0f));
 
-		if (Physics.Raycast(ray, out _hit, _rangeInteraction))
+		if (Physics.Raycast(ray, out _hit, rangeInteraction))
 		{
 			_hit.collider.gameObject.GetComponent<Interactible>()?.SetHighlight(true);
 			_lastObject = _hit.collider.gameObject;
-
+			
 			if (isInteracting)
 			{
 				_hit.collider.gameObject.GetComponent<Interactible>()?.Interact();
+				_lastObject = null;
 			}
 		}
 		else
