@@ -19,7 +19,7 @@ public class PauseManager : Manager
 	[SerializeField] private GameObject backgroundBuildingPrefab;
 	private GameObject _backgroundBuildingInstance;
 
-	[ShowOnly][SerializeField] private static bool _isPaused;
+	[ShowNonSerializedField] private static bool _isPaused;
 	public static bool IsPaused => _isPaused;
 
 	private InputManager _inputManager;

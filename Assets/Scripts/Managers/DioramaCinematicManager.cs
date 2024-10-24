@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using NaughtyAttributes;
 
 public class DioramaCinematicManager : MonoBehaviour
 {
 	[Header("Cameras controls")]
-	[ShowOnly] [SerializeField] private int _currentCamera;
+	[ShowNonSerializedField] private int _currentCamera;
 	[SerializeField] private bool isPlaying = true;
 	[SerializeField] [Range(1f, 10f)] private float travelTime = 5f;
 
