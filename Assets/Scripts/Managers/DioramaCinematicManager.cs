@@ -9,7 +9,7 @@ public class DioramaCinematicManager : MonoBehaviour
 	[Header("Cameras controls")]
 	[ShowNonSerializedField] private int _currentCamera;
 	[SerializeField] private bool isPlaying = true;
-	[SerializeField] [Range(1f, 10f)] private float travelTime = 5f;
+	[SerializeField][Range(1f, 10f)] private float travelTime = 5f;
 
 	[Header("Cameras")]
 	[SerializeField] private List<CinemachineVirtualCamera> cameras;
@@ -20,19 +20,22 @@ public class DioramaCinematicManager : MonoBehaviour
 	const int CAMERA_FOCUSED = 100;
 	const int CAMERA_UNFOCUSED = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
+	// Start is called before the first frame update
+	void Start()
+	{
 		// Here we affect the last camera
 		_currentCamera = Mathf.Min(cameras.Count, carts.Count);
 		StartCoroutine(nameof(CameraTravelling));
-    }
+	}
 
-	private IEnumerator CameraTravelling(){
-		while (isPlaying) {
+	private IEnumerator CameraTravelling()
+	{
+		while (isPlaying)
+		{
 			// Because we're incrementing the value here
 			_currentCamera += 1;
-			if (_currentCamera >= cameras.Count || _currentCamera >= carts.Count) {
+			if (_currentCamera >= cameras.Count || _currentCamera >= carts.Count)
+			{
 				// Thus making the current camera start at 0
 				_currentCamera = 0;
 			}
