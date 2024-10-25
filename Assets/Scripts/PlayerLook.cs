@@ -12,14 +12,16 @@ public class PlayerLook : MonoBehaviour
     private float _lookDistance = 1.65f;
     private CheckObject _checkObject;
     private bool _fountainActive = false;
-    
     private InputManager _inputManager;
+    private PlayerOnEyePlace _playerOnEyePlace;
 
     // Start is called before the first frame update
     void Start()
     {
         _player = FindFirstObjectByType<CharacterController>();
         _inputManager = GameManager.GetManager<InputManager>();
+        _playerOnEyePlace = FindObjectOfType<PlayerOnEyePlace>();
+
     }
 
     // Update is called once per frame
@@ -35,7 +37,7 @@ public class PlayerLook : MonoBehaviour
                 {
                     _checkObject.codeTry.Clear();
                 }
-                if (!_eyeOn && _player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
+                if (!_eyeOn && _playerOnEyePlace.onPlace)
                 {
                     _checkObject = hit.transform.GetComponent<CheckEye>();
                     _checkObject.timer += Time.deltaTime;
@@ -56,7 +58,7 @@ public class PlayerLook : MonoBehaviour
             }
             
             //Ajout de la valeur du checkDoor dans la liste du CheckEye
-            if (hit.transform.gameObject.TryGetComponent(typeof(CheckDoor), out Component component1) && _checkObject != null)
+            if (hit.transform.gameObject.TryGetComponent(typeof(CheckDoor), out Component component1) && _checkObject != null && _eyeOn)
             {
                 if (_checkObject.codeTry.Count == 0 || _checkObject.codeTry[_checkObject.codeTry.Count - 1] != hit.transform.GetComponent<CheckDoor>().id)
                 {
@@ -68,15 +70,27 @@ public class PlayerLook : MonoBehaviour
             if (hit.transform.gameObject.TryGetComponent(typeof(CheckFountain), out Component component3))
             {
                 _checkObject = hit.transform.GetComponent<CheckFountain>();
+                if (!_eyeOn && _player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
+                {
+                    GetComponent<Eye>().EyeActivate();
+                    _playerPos = _player.transform.position;
+                    _eyeOn = true;
+                    _fountainActive = true;
+                }
+            }
+            //Detection Pillier
+            if (hit.transform.gameObject.TryGetComponent(typeof(CheckPillar), out Component component4))
+            {
+                _checkObject = hit.transform.GetComponent<CheckPillar>();
                 _checkObject.timer += Time.deltaTime;
                 if (!_eyeOn && _player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
                 {
                     if (_checkObject.timer >= _checkObject.timeLimit)
                     {
+                        _checkObject.timer = 0.0f;
                         GetComponent<Eye>().EyeActivate();
                         _playerPos = _player.transform.position;
                         _eyeOn = true;
-                        _fountainActive = true;
                     }
                 }
             }
@@ -86,42 +100,59 @@ public class PlayerLook : MonoBehaviour
         if(_playerPos!= new Vector3(0,10000,0) && _playerPos != _player.transform.position || _checkObject!=null && _checkObject.open)
         {
             _checkObject.timer = 0.0f; 
-            _eyeOn = false;
-            this.gameObject.GetComponent<Eye>().EyeDeactivate();
-            _playerPos = new Vector3(0, 10000, 0);
             
-            if (_checkObject != null)
+            if (_checkObject != null &&_checkObject.GetType() == typeof(CheckFountain) || _checkObject != null &&_checkObject.GetType() == typeof(CheckPillar))
+            {
+                if(!_playerOnEyePlace.onPlace || _checkObject.open) 
+                {
+                    _checkObject.codeTry.Clear();
+                    _checkObject = null;
+                    _fountainActive = false;
+                    _eyeOn = false;
+                    this.gameObject.GetComponent<Eye>().EyeDeactivate();
+                    _playerPos = new Vector3(0, 10000, 0);
+                }
+            }
+            
+            else if (_checkObject != null && _checkObject.GetType()!= typeof(CheckFountain))
             {
                 _checkObject.codeTry.Clear();
                 _checkObject = null;
-            }
-
-            if (_checkObject != null)
-            {
                 _fountainActive = false;
-                _checkObject = null;
+                _eyeOn = false;
+                this.gameObject.GetComponent<Eye>().EyeDeactivate();
+                _playerPos = new Vector3(0, 10000, 0);
             }
         }
 
         //Eye Range
         if (_player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
         {
-            _lookDistance = 8f;
+            if (_player.gameObject.GetComponent<PlayerOnEyePlace>().eyePlace.GetType() == typeof(EyePlacePillar))
+            {
+                _lookDistance = 50.0f;
+            }
+            else
+            {
+                _lookDistance = 8f;
+            }
+            
         }
         else
         {
             _lookDistance = 1.65f;
         }
         //Detection Input Fontaine
-        if (_fountainActive && _checkObject != null)
+        if (_fountainActive && _checkObject.GetType()== typeof(CheckFountain))
         {
-            if (Input.anyKey)
+            if (_inputManager.PlayerIsMoving())
             {
-                Debug.Log("pomme");
+                if (_checkObject.codeTry.Count == 0 || _checkObject.codeTry[_checkObject.codeTry.Count - 1] != _checkObject.VectorToInt(_inputManager.GetPlayerMovement()))
+                {
+                    _checkObject.codeTry.Add(_checkObject.VectorToInt(_inputManager.GetPlayerMovement()));
+                }
                 
             }
         }
-        
-        //Debug.Log(_inputManager.GetPlayerMovement());
     }
 }

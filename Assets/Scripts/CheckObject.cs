@@ -18,6 +18,7 @@ public class CheckObject : MonoBehaviour
 
     protected void Update()
     {
+
         if (codeTry.SequenceEqual(code))
         {
             open = true;
@@ -26,6 +27,34 @@ public class CheckObject : MonoBehaviour
                 objectToCheck.transform.position.y + 50,
                 objectToCheck.transform.position.z
             );
+        }
+    }
+    
+    public int VectorToInt(Vector2 vector)
+    {
+        //Joueur va droite
+        if (vector == new Vector2(1, 0))
+        {
+            return 1;
+        }
+        //Joueur va gauche
+        else if (vector == new Vector2(-1, 0))
+        {
+            return 2;
+        }
+        //Joueur avance
+        else if (vector == new Vector2(0, 1))
+        {
+            return 3;
+        }
+        //Joueur recule
+        else if (vector == new Vector2(0, -1))
+        {
+            return 4;
+        }
+        else
+        {
+            return 0;
         }
     }
 }

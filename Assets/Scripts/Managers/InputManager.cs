@@ -30,6 +30,18 @@ public class InputManager : Manager
 		return _playerInput.Player.Movement.ReadValue<Vector2>();
 	}
 
+	public bool PlayerIsMoving()
+	{
+		if (_playerInput.Player.Movement.ReadValue<Vector2>() == new Vector2(0, 0))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	/// <summary>
 	/// Get the player look delta input
 	/// </summary>
