@@ -2,6 +2,7 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class PauseManager : Manager
 {
