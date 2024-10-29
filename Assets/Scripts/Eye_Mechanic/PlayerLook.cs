@@ -14,7 +14,8 @@ public class PlayerLook : MonoBehaviour
     private bool _fountainActive = false;
     private InputManager _inputManager;
     private PlayerOnEyePlace _playerOnEyePlace;
-
+    public UpDownFountain UpFountain;
+    public UpDownFountain DownFountain;
     private float _timer = 0.0f;
     private float _timeLimit = 1.0f;
     private int _danceValor = 0;
@@ -81,6 +82,25 @@ public class PlayerLook : MonoBehaviour
                     _eyeOn = true;
                     _fountainActive = true;
                 }
+            }
+            //Positionement et detection des box up et down
+            if (_fountainActive)
+            {
+                UpFountain.transform.position = new Vector3(_player.transform.position.x, UpFountain.transform.position.y, _player.transform.position.z);
+                DownFountain.transform.position = new Vector3(_player.transform.position.x, DownFountain.transform.position.y, _player.transform.position.z);
+                if (hit.transform.gameObject.TryGetComponent(typeof(UpDownFountain), out Component component5))
+                {
+                    if (_checkObject.codeTry.Count == 0 
+                        || _checkObject.codeTry[_checkObject.codeTry.Count - 1] != hit.transform.GetComponent<UpDownFountain>().id)
+                    {
+                        _checkObject.codeTry.Add(hit.transform.GetComponent<UpDownFountain>().id);
+                    }
+                }
+            }
+            else
+            {
+                UpFountain.transform.position = new Vector3(10000, UpFountain.transform.position.y, 10000);
+                DownFountain.transform.position = new Vector3(1000, DownFountain.transform.position.y, 1000);
             }
             //Detection Pillier
             if (hit.transform.gameObject.TryGetComponent(typeof(CheckPillar), out Component component4))
