@@ -14,25 +14,21 @@ public class Eye : MonoBehaviour
     private UniversalAdditionalCameraData _cameraData;
     private UniversalRenderPipeline _urp;
     private CharacterController _player;
-
+    
+    private InputManager _inputManager;
     void Start()
     {
         _hiddens = FindFirstObjectByType<Hidden>();
         _visible = FindFirstObjectByType<Show>();
         _cameraData = this.GetComponent<UniversalAdditionalCameraData>();
         _player = FindFirstObjectByType<CharacterController>();
+        
+        _inputManager = GameManager.GetManager<InputManager>();
+
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Mouse1))
-        {
-            EyeActivate();
-        }
-        else if (Input.GetMouseButtonUp(1))
-        {
-            EyeDeactivate();
-        }
     }
     
     public void EyeActivate()

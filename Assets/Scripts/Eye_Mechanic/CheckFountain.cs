@@ -8,7 +8,8 @@ public class CheckFountain : CheckObject
     [SerializeField] private GameObject fountain;
     void Start()
     {
-        timeLimit = 0;
+        timer = 0.0f;
+        timeLimit = 2.0f;
         objectToCheck = fountain;
         code = new List<int> { 1, 2 };
     }

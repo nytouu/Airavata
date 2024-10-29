@@ -24,7 +24,6 @@ public class Interaction : MonoBehaviour
 	void Update()
 	{
 		bool isInteracting = _inputManager.GetPlayerInteraction();
-
 		float viewportCenterX = Screen.width / 2f;
 		float viewportCenterY = Screen.height / 2f;
 
@@ -44,6 +43,14 @@ public class Interaction : MonoBehaviour
 		else
 		{
 			_lastObject?.GetComponent<Interactible>()?.SetHighlight(false);
+		}
+	}
+
+	private void OnTriggerEnter(Collider obj)
+	{
+		if (obj.TryGetComponent(typeof(Connaissance), out Component connaissance))
+		{
+			Destroy(connaissance.gameObject);
 		}
 	}
 }

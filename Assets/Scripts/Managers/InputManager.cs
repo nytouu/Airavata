@@ -12,12 +12,12 @@ public class InputManager : Manager
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
-	private void OnEnable()
+	public void OnEnable()
 	{
 		_playerInput.Enable();
 	}
 
-	private void OnDisable()
+	public void OnDisable()
 	{
 		_playerInput.Disable();
 	}

@@ -1,3 +1,4 @@
+using Cinemachine;
 using UnityEngine;
 
 // https://docs.unity3d.com/ScriptReference/CharacterController.Move.html
@@ -10,6 +11,7 @@ public class FPSController : MonoBehaviour
 	private InputManager _inputManager;
 	private Transform _orientation;
 
+
 	[SerializeField] private Transform mainCameraTransform;
 	[SerializeField][Range(0.1f, 10f)] private float walkSpeed = 2.0f;
 	[SerializeField][Range(2f, 20f)] private float sprintSpeed = 5.0f;
@@ -18,6 +20,7 @@ public class FPSController : MonoBehaviour
 
 	private void Start()
 	{
+		
 		_playerController = GetComponent<CharacterController>();
 		_inputManager = GameManager.GetManager<InputManager>();
 		_orientation = new GameObject("Player Orientation").transform;
@@ -53,5 +56,17 @@ public class FPSController : MonoBehaviour
 
 		_playerVelocity.y += gravityValue * Time.deltaTime;
 		_playerController.Move(_playerVelocity * Time.deltaTime);
+		
+		
+		//Test_Cinematique 
+		if (Input.GetKey(KeyCode.Mouse1))
+		{
+			_inputManager.OnDisable();
+			
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
+			_inputManager.OnEnable();
+		}
 	}
 }

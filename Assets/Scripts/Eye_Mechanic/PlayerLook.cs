@@ -15,6 +15,10 @@ public class PlayerLook : MonoBehaviour
     private InputManager _inputManager;
     private PlayerOnEyePlace _playerOnEyePlace;
 
+    private float _timer = 0.0f;
+    private float _timeLimit = 1.0f;
+    private int _danceValor = 0;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -136,7 +140,6 @@ public class PlayerLook : MonoBehaviour
             {
                 _lookDistance = 8f;
             }
-            
         }
         else
         {
@@ -147,11 +150,22 @@ public class PlayerLook : MonoBehaviour
         {
             if (_inputManager.PlayerIsMoving())
             {
-                if (_checkObject.codeTry.Count == 0 || _checkObject.codeTry[_checkObject.codeTry.Count - 1] != _checkObject.VectorToInt(_inputManager.GetPlayerMovement()))
-                {
-                    _checkObject.codeTry.Add(_checkObject.VectorToInt(_inputManager.GetPlayerMovement()));
+                _timer += Time.deltaTime;
+                if (_timer>= _timeLimit  && _checkObject.codeTry.Count == 0 
+                    || _timer>= _timeLimit && _checkObject.codeTry[_checkObject.codeTry.Count - 1] != _checkObject.VectorToInt(_inputManager.GetPlayerMovement()))
+                { 
+                    _timer = 0.0f;
+                    _danceValor = (_checkObject.VectorToInt(_inputManager.GetPlayerMovement()));
                 }
-                
+            }
+            else
+            {
+                _timer = 0.0f;
+                if (_danceValor != 0)
+                {
+                    _checkObject.codeTry.Add(_danceValor);
+                    _danceValor = 0;
+                }
             }
         }
     }
