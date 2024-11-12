@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Stone
+  m_Name: Mat_StoneMoss
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -42,11 +42,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _BaseMap:
-        m_Texture: {fileID: 2800000, guid: dc25a210cec73f98aa467ddf02d6d79c, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf114f74fca3fb61dbcf114e81ba174d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BumpMap:
-        m_Texture: {fileID: 2800000, guid: 321d4ed6b7a53cffb8f91f9448e96c25, type: 3}
+        m_Texture: {fileID: 2800000, guid: b8055240837de4a81aade644d600ade6, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _DetailAlbedoMap:
@@ -66,15 +66,15 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: dc25a210cec73f98aa467ddf02d6d79c, type: 3}
+        m_Texture: {fileID: 2800000, guid: bf114f74fca3fb61dbcf114e81ba174d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: 7907a11e7db8beec69ee2f1259c884f5, type: 3}
+        m_Texture: {fileID: 2800000, guid: a2b4b25b55ac7b032a2e9f10dc428bbe, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
-        m_Texture: {fileID: 2800000, guid: 8f2f29a9a59e498869a342ecfda521ce, type: 3}
+        m_Texture: {fileID: 2800000, guid: 4a30de3345e2b6cd0b1d0f7bd75808ee, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
