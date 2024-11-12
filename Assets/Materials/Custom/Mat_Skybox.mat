@@ -103,9 +103,9 @@ Material:
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
     - _Cloud_Density: 1.28
-    - _Cloud_Power: 2.64
-    - _Cloud_Scale: 1.41
-    - _Cloud_Speed: 0.073
+    - _Cloud_Power: 1.45
+    - _Cloud_Scale: 0.85
+    - _Cloud_Speed: 0.092
     - _Cull: 2
     - _Cutoff: 0.5
     - _DetailAlbedoMapScale: 1
@@ -138,8 +138,8 @@ Material:
     - _Cloud_Color: {r: 3.211117, g: 2.740561, b: 1.3859302, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Ground_Color: {r: 0.7490196, g: 0.51987773, b: 0.37010375, a: 0}
+    - _Ground_Color: {r: 0.4009434, g: 0.2850317, b: 0.20709105, a: 0}
     - _Horizon_Color: {r: 1.0592737, g: 0.5924196, b: 0.39930737, a: 0}
-    - _Sky_Color: {r: 0.2431372, g: 1.4980392, b: 1.3289148, a: 0}
+    - _Sky_Color: {r: 0.2431372, g: 0.790105, b: 1.4980392, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []

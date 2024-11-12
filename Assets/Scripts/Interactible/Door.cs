@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -9,7 +10,7 @@ public class Door : MonoBehaviour
     [SerializeField]
     private Transform door;
     [SerializeField]
-    private ParticleSystem particles;
+    private List<ParticleSystem> particles;
     [SerializeField]
     [Range(1f, 25f)]
     private float distanceToActivate;
@@ -37,13 +38,21 @@ public class Door : MonoBehaviour
         }
 
 		// particlesEnabled is controlled by the animation clip.
-		if (particlesEnabled && !particles.isPlaying)
+		if (particlesEnabled)
 		{
-			particles.Play();
+			foreach (ParticleSystem particle in particles)
+			{
+				if (!particle.isPlaying)
+					particle.Play();
+			}
 		}
-		else if (!particlesEnabled && particles.isPlaying)
+		else if (!particlesEnabled)
 		{
-			particles.Stop();
+			foreach (ParticleSystem particle in particles)
+			{
+				if (particle.isPlaying)
+					particle.Stop();
+			}
 		}
     }
 }
