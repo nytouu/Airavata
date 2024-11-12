@@ -6,14 +6,14 @@ public class FPSController : MonoBehaviour
 {
 	private CharacterController _playerController;
 
-	private Vector3 _verticalMovement;
+	private float _verticalMovement;
 	private InputManager _inputManager;
 	private Transform _orientation;
 	private Vector3 _movement;
 	private bool _isGrounded;
 
 	public bool IsGrounded => _isGrounded;
-	public Vector3 Movement => new Vector3(_movement.x, _verticalMovement.y, _movement.z);
+	public Vector3 Movement => new Vector3(_movement.x, _verticalMovement, _movement.z);
 
 	[SerializeField] private Transform mainCameraTransform;
 	[SerializeField][Range(0.1f, 10f)] private float walkSpeed = 2.0f;
@@ -31,10 +31,11 @@ public class FPSController : MonoBehaviour
 	void Update()
 	{
 		_isGrounded = _playerController.isGrounded;
+
 		// Ground detection using Unity's Character Controller
-		if (_isGrounded && _verticalMovement.y < 0f)
+		if (_isGrounded && _verticalMovement < 0f)
 		{
-			_verticalMovement.y = 0f;
+			_verticalMovement = 0f;
 		}
 
 		// Orientation
@@ -44,7 +45,6 @@ public class FPSController : MonoBehaviour
 		bool isSprinting = _inputManager.GetPlayerSprint();
 		float playerSpeed = isSprinting ? sprintSpeed : walkSpeed;
 
-		Vector3 movementLastFrame = _movement;
 		Vector2 movement = _inputManager.GetPlayerMovement();
 
 		_movement = new Vector3(movement.x, 0f, movement.y);
@@ -55,10 +55,10 @@ public class FPSController : MonoBehaviour
 		// Jump
 		if (_inputManager.GetPlayerJump() && _isGrounded)
 		{
-			_verticalMovement.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
+			_verticalMovement += Mathf.Sqrt(jumpHeight * -3.0f * gravityValue);
 		}
 
-		_verticalMovement.y += gravityValue * Time.deltaTime;
-		_playerController.Move(_verticalMovement * Time.deltaTime);
+		_verticalMovement += gravityValue * Time.deltaTime;
+		_playerController.Move(new Vector3(0f, _verticalMovement, 0f) * Time.deltaTime);
 	}
 }
