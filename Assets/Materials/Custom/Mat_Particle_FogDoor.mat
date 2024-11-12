@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Mat_Particle_Fog
-  m_Shader: {fileID: -6465566751694194690, guid: f68e7893652e9a5cab668a785482a312,
+  m_Name: Mat_Particle_FogDoor
+  m_Shader: {fileID: -6465566751694194690, guid: 3af444eff8528cc7c8a0f8b5cdd54591,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -30,7 +30,7 @@ Material:
   m_LightmapFlags: 0
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 3000
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -125,7 +125,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 0
     - _Camera_Depth_Fade_Offset: -5
-    - _Camera_Depth_Fade_Range: 34.6
+    - _Camera_Depth_Fade_Range: 0
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -151,7 +151,7 @@ Material:
     - _Metallic: 0
     - _Mode: 2
     - _OcclusionStrength: 1
-    - _Opacity: 0.527
+    - _Opacity: 0.292
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -167,7 +167,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _Surface_Depth_Factor: 0
-    - _Surface_Depth_Fade: 0.0021
+    - _Surface_Depth_Fade: 0
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
