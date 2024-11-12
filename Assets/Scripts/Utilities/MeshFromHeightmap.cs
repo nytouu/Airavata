@@ -1,7 +1,6 @@
 using UnityEngine;
 using NaughtyAttributes;
 
-
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter), (typeof(MeshRenderer)))]
 public class MeshFromHeightmap : MonoBehaviour
@@ -44,6 +43,8 @@ public class MeshFromHeightmap : MonoBehaviour
 	private MeshRenderer _meshRenderer;
 	private MeshFilter _meshFilter;
 
+	private MeshResolution _lastResolutionSaved;
+
 	void Start()
 	{
 		_meshRenderer = GetComponent<MeshRenderer>();
@@ -56,6 +57,10 @@ public class MeshFromHeightmap : MonoBehaviour
 	[DisableIf(nameof(autoMeshUpdateEnabled))]
 	public void RegenerateMesh()
 	{
+		/* Color[] verticesColors = null; */
+		/* if (_meshFilter != null) */
+		/* 	verticesColors = _meshFilter.sharedMesh.colors; */
+
 		_meshFilter.mesh = null;
 		_meshFilter.sharedMesh = null;
 		_meshRenderer.material = null;
@@ -82,7 +87,7 @@ public class MeshFromHeightmap : MonoBehaviour
 					(d - depth / 2f) * size / depth
 				);
 				_vertices[i] = position;
-				_uvs[i] = new Vector2(w / width, d / depth);
+				_uvs[i] = new Vector2(w - width / 2f, d - depth / 2f);
 
 				i++;
 			}
@@ -117,15 +122,22 @@ public class MeshFromHeightmap : MonoBehaviour
 
 		mesh.SetVertices(_vertices);
 		mesh.SetIndices(triangles, MeshTopology.Triangles, 0);
+		mesh.RecalculateUVDistributionMetrics();
 		mesh.SetUVs(0, _uvs);
 
-		mesh.RecalculateNormals();
+		/* if (verticesColors != null) */
+		/* 	mesh.colors = verticesColors; */
+
 		mesh.Optimize();
+		mesh.RecalculateTangents();
+		mesh.RecalculateNormals();
 
 		_meshFilter.mesh = mesh;
 		_meshFilter.sharedMesh = mesh;
 		_meshRenderer.material = material;
 		_meshRenderer.sharedMaterial = material;
+
+		_lastResolutionSaved = resolution;
 	}
 
 	private float GetHeightValue(Texture2D texture, int x, int y)
@@ -140,5 +152,24 @@ public class MeshFromHeightmap : MonoBehaviour
 	{
 		if (autoMeshUpdateEnabled)
 			RegenerateMesh();
+	}
+
+	/* private Color[] UpscaleVerticesColors(Color[] colors) */
+	/* { */
+	/* Color[] result; */
+	/* return result; */
+	/* } */
+
+	private Color[] DownscaleVerticesColors(Color[] colors, MeshResolution newResolution, int verticesCount)
+	{
+		int offset = _lastResolutionSaved - newResolution;
+		Color[] newColors = new Color[verticesCount];
+
+		for (int i = 0; i < verticesCount; i++)
+		{
+		    newColors[i] = colors[i + offset];
+		}
+
+		return newColors;
 	}
 }
