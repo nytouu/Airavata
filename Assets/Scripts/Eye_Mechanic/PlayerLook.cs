@@ -10,7 +10,7 @@ public class PlayerLook : MonoBehaviour
     private Vector3 _playerPos = new Vector3(0, 10000, 0);
     private bool _eyeOn;
     private float _lookDistance = 1.65f;
-    private CheckObject _checkObject;
+    [SerializeField]private CheckObject _checkObject;
     private bool _fountainActive = false;
     private InputManager _inputManager;
     private PlayerOnEyePlace _playerOnEyePlace;
@@ -19,6 +19,8 @@ public class PlayerLook : MonoBehaviour
     private float _timer = 0.0f;
     private float _timeLimit = 1.0f;
     private int _danceValor = 0;
+
+    private Vector3 _eyePos;
 
     // Start is called before the first frame update
     void Start()
@@ -187,6 +189,12 @@ public class PlayerLook : MonoBehaviour
                     _danceValor = 0;
                 }
             }
+        }
+
+        if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn)
+        {
+            _checkObject.transform.position = Vector3.MoveTowards(_checkObject.transform.position, 
+                new Vector3(hit.point.x,hit.point.y, _checkObject.transform.position.z), 0.0005f);
         }
     }
 }

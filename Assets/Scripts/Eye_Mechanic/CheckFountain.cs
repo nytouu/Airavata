@@ -9,7 +9,6 @@ public class CheckFountain : CheckObject
     void Start()
     {
         timer = 0.0f;
-        timeLimit = 2.0f;
         objectToCheck = fountain;
         code = new List<int> { 1, 2 };
     }

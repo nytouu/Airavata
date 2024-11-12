@@ -9,7 +9,7 @@ public class CheckObject : MonoBehaviour
     [SerializeField] public List<int> codeTry;
     protected GameObject objectToCheck;
     public float timer = 0f;
-    public float timeLimit = 3.0f;
+    public float timeLimit = 0f;
     public bool open = false;
     protected void Start()
     {
@@ -23,8 +23,8 @@ public class CheckObject : MonoBehaviour
         {
             open = true;
             objectToCheck.transform.position = new Vector3(
-                objectToCheck.transform.position.x,
-                objectToCheck.transform.position.y + 50,
+                objectToCheck.transform.position.x + 1.12f,
+                objectToCheck.transform.position.y,
                 objectToCheck.transform.position.z
             );
         }
