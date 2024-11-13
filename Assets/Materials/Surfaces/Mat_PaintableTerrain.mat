@@ -193,7 +193,7 @@ Material:
     - _Render_Depth_Only: 1
     - _Render_Depth_Test: 0
     - _Second_Metallic: 0
-    - _Second_Rough_value: 0.509
+    - _Second_Rough_value: 0.785
     - _Second_Smoothness: 0.45
     - _Smoothness: 0.4
     - _SmoothnessTextureChannel: 0
