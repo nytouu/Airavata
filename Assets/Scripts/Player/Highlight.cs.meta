@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/Player/Highlight.cs.meta
+guid: dc826e696614b2b4587d540da44c1411
+========
+guid: ed19016dde5f176f09a66040a7c54d86
+>>>>>>>> jd:Assets/Scripts/Interactible/TestBox.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

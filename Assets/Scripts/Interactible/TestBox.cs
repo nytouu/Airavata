@@ -1,7 +1,7 @@
 public class TestBox : Interactible
 {
-    public override void Interact()
-    {
-        Destroy(gameObject);
-    }
+	public override void Interact()
+	{
+		Destroy(gameObject);
+	}
 }

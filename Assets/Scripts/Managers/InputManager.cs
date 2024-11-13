@@ -111,4 +111,12 @@ public class InputManager : Manager
     {
         return _playerInput.Player.Pause.triggered;
     }
+
+    /// <summary>
+    /// Returns true if player is moving
+    /// </summary>
+	public bool PlayerIsMoving()
+	{
+		return _playerInput.Player.Movement.ReadValue<Vector2>() != new Vector2(0, 0);
+	}
 }

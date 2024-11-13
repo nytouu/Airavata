@@ -69,5 +69,15 @@ public class FPSController : MonoBehaviour
 
         _verticalMovement += gravityValue * Time.deltaTime;
         _playerController.Move(new Vector3(0f, _verticalMovement, 0f) * Time.deltaTime);
+
+		// Test Cinematique 
+		if (Input.GetKey(KeyCode.Mouse1))
+		{
+			_inputManager.OnDisable();
+		}
+		else if (Input.GetMouseButtonUp(1))
+		{
+			_inputManager.OnEnable();
+		}
     }
 }

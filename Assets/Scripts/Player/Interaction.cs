@@ -38,6 +38,7 @@ public class Interaction : MonoBehaviour
             if (isInteracting)
             {
                 _hit.collider.gameObject.GetComponent<Interactible>()?.Interact();
+				_lastObject = null;
             }
         }
         else
@@ -45,4 +46,12 @@ public class Interaction : MonoBehaviour
             _lastObject?.GetComponent<Interactible>()?.SetHighlight(false);
         }
     }
+
+	private void OnTriggerEnter(Collider obj)
+	{
+		if (obj.TryGetComponent(typeof(Connaissance), out Component connaissance))
+		{
+			Destroy(connaissance.gameObject);
+		}
+	}
 }
