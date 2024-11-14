@@ -101,8 +101,11 @@ public class PlayerLook : MonoBehaviour
 			}
 			else
 			{
-				UpFountain.transform.position = new Vector3(10000, UpFountain.transform.position.y, 10000);
-				DownFountain.transform.position = new Vector3(1000, DownFountain.transform.position.y, 1000);
+				if (UpFountain != null)
+				{
+					UpFountain.transform.position = new Vector3(10000, UpFountain.transform.position.y, 10000);
+					DownFountain.transform.position = new Vector3(1000, DownFountain.transform.position.y, 1000);
+				}
 			}
 			// Detection Pillier
 			if (hit.transform.gameObject.TryGetComponent(typeof(CheckPillar), out Component component4))
@@ -194,11 +197,12 @@ public class PlayerLook : MonoBehaviour
 			}
 		}
 
-		if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn)
-		{
-			_checkObject.transform.position =
-				Vector3.MoveTowards(_checkObject.transform.position,
-									new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f);
-		}
+		// FIXME: Move seulement l'élément focus plutôt que tout les checkEye de la scène.
+		/* if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn) */
+		/* { */
+		/* 	_checkObject.transform.position = */
+		/* 		Vector3.MoveTowards(_checkObject.transform.position, */
+		/* 							new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f); */
+		/* } */
 	}
 }

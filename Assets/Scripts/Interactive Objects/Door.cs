@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +7,9 @@ public class Door : MonoBehaviour
 	[SerializeField]
 	private Animator animator;
 	[SerializeField]
-	private Transform player;
-	[SerializeField]
 	private Transform door;
 	[SerializeField]
 	private List<ParticleSystem> particles;
-	[SerializeField]
-	[Range(1f, 25f)]
-	private float distanceToActivate;
 
 	[SerializeField]
 	private bool particlesEnabled;
@@ -23,36 +19,32 @@ public class Door : MonoBehaviour
 		particlesEnabled = false;
 	}
 
-	// Update is called once per frame
-	void Update()
+	public void Open()
 	{
-		float distance = Vector3.Distance(player.position, door.position);
+		animator.SetBool("Should Open", true);
+		StartCoroutine(nameof(StartParticles));
+	}
 
-		if (distance <= distanceToActivate)
+	public void Close()
+	{
+		animator.SetBool("Should Open", false);
+		StartCoroutine(nameof(StartParticles));
+	}
+
+	private IEnumerator StartParticles()
+	{
+		yield return new WaitUntil(() => particlesEnabled);
+		foreach (ParticleSystem particle in particles)
 		{
-			animator.SetBool("Should Open", true);
-		}
-		else
-		{
-			animator.SetBool("Should Open", false);
+			if (!particle.isPlaying)
+				particle.Play();
 		}
 
-		// particlesEnabled is controlled by the animation clip.
-		if (particlesEnabled)
+		yield return new WaitUntil(() => !particlesEnabled);
+		foreach (ParticleSystem particle in particles)
 		{
-			foreach (ParticleSystem particle in particles)
-			{
-				if (!particle.isPlaying)
-					particle.Play();
-			}
-		}
-		else if (!particlesEnabled)
-		{
-			foreach (ParticleSystem particle in particles)
-			{
-				if (particle.isPlaying)
-					particle.Stop();
-			}
+			if (particle.isPlaying)
+				particle.Stop();
 		}
 	}
 }

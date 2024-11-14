@@ -1,7 +1,7 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.Events;
 
 public class CheckObject : MonoBehaviour
 {
@@ -13,20 +13,23 @@ public class CheckObject : MonoBehaviour
 	public float timer = 0f;
 	public float timeLimit = 0f;
 	public bool open = false;
+
+	public UnityEvent onOpenAction;
+
 	protected void Start()
 	{
-		code = new List<int> { 1, 2, 3, 1 };
 	}
 
 	protected void Update()
 	{
-
 		if (codeTry.SequenceEqual(code))
 		{
 			open = true;
-			objectToCheck.transform.position =
-				new Vector3(objectToCheck.transform.position.x + 1.12f, objectToCheck.transform.position.y,
-							objectToCheck.transform.position.z);
+			onOpenAction.Invoke();
+			Destroy(objectToCheck);
+			/* objectToCheck.transform.position = */
+			/* 	new Vector3(objectToCheck.transform.position.x + 1.12f, objectToCheck.transform.position.y, */
+			/* 				objectToCheck.transform.position.z); */
 		}
 	}
 

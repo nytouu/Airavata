@@ -11,25 +11,25 @@ public class MeshFromHeightmap : MonoBehaviour
 		Low64 = 64,
 		Medium128 = 128,
 		High256 = 256,
-		VeryHigh512 = 512
+		VeryHigh512 = 512,
+		VeryVeryHigh1024 = 1024
 	};
 
-	[ShowAssetPreview(256, 256)]
 	[OnValueChanged(nameof(OnValueChanged))]
 	[SerializeField]
-	private Texture2D heightmap;
+	private Terrain terrain;
 
 	[OnValueChanged(nameof(OnValueChanged))]
 	[SerializeField]
 	private Material material;
 
 	[OnValueChanged(nameof(OnValueChanged))]
-	[Range(10f, 200f)]
+	[Range(10f, 1000f)]
 	[SerializeField]
 	private float size = 100f;
 
 	[OnValueChanged(nameof(OnValueChanged))]
-	[Range(0f, 200f)]
+	[Range(0f, 1000f)]
 	[SerializeField]
 	private float intensity = 15f;
 
@@ -71,25 +71,27 @@ public class MeshFromHeightmap : MonoBehaviour
 		_meshRenderer.sharedMaterial = null;
 
 		int width = (int)resolution;
-		int depth = (int)resolution;
 
-		_verticesCount = (width + 1) * (depth + 1);
-		_trianglesCount = width * depth * 2 * 3;
+		_verticesCount = (width + 1) * (width + 1);
+		_trianglesCount = width * width * 2 * 3;
 
 		// Defining vertices
 		_vertices = new Vector3[_verticesCount];
 		_uvs = new Vector2[_verticesCount];
 
 		int i = 0;
-		for (int d = 0; d <= depth; d++)
+		for (int d = 0; d <= width; d++)
 		{
 			for (int w = 0; w <= width; w++)
 			{
+				Vector3 positionToSample = new Vector3(terrain.transform.position.x * w, 2f, terrain.transform.position.x * d);
+
 				Vector3 position =
-					new Vector3((w - width / 2f) * size / width, GetHeightValue(heightmap, w, d) * intensity,
-								(d - depth / 2f) * size / depth);
+					new Vector3((w - width / 2f) * size / width,
+								terrain.SampleHeight(transform.localToWorldMatrix * new Vector2(w, d)) * intensity,
+								(d - width / 2f) * size / width);
 				_vertices[i] = position;
-				_uvs[i] = new Vector2(w - width / 2f, d - depth / 2f);
+				_uvs[i] = new Vector2(w - width / 2f, d - width / 2f);
 
 				i++;
 			}
@@ -99,7 +101,7 @@ public class MeshFromHeightmap : MonoBehaviour
 		int[] triangles = new int[_trianglesCount];
 		int vertex = 0;
 		int triangle = 0;
-		for (int d = 0; d < depth; d++)
+		for (int d = 0; d < width; d++)
 		{
 			for (int w = 0; w < width; w++)
 			{
@@ -139,14 +141,6 @@ public class MeshFromHeightmap : MonoBehaviour
 		_meshRenderer.sharedMaterial = material;
 
 		_lastResolutionSaved = resolution;
-	}
-
-	private float GetHeightValue(Texture2D texture, int x, int y)
-	{
-		int step = texture.width / (int)resolution;
-
-		Color pixel = texture.GetPixel(x * step, y * step);
-		return pixel.r;
 	}
 
 	private void OnValueChanged()
