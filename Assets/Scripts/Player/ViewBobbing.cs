@@ -4,18 +4,30 @@ using Cinemachine;
 public class ViewBobbing : MonoBehaviour
 {
 	[Header("General")]
-	[SerializeField] NoiseSettings viewBobbingNoiseProfile;
-	[SerializeField][Range(0.00001f, 0.005f)] private float transitionSpeed = 0.001f;
+	[SerializeField]
+	NoiseSettings viewBobbingNoiseProfile;
+	[SerializeField]
+	[Range(0.00001f, 0.005f)]
+	private float transitionSpeed = 0.001f;
 
 	[Header("Walk view bobbing")]
-	[SerializeField][Range(0f, 5f)] private float walkAmplitudeGain = 1f;
-	[SerializeField][Range(0f, 5f)] private float walkFrequencyGain = 1f;
+	[SerializeField]
+	[Range(0f, 5f)]
+	private float walkAmplitudeGain = 1f;
+	[SerializeField]
+	[Range(0f, 5f)]
+	private float walkFrequencyGain = 1f;
 	[Header("Sprint view bobbing")]
-	[SerializeField][Range(0f, 5f)] private float sprintAmplitudeGain = 2f;
-	[SerializeField][Range(0f, 5f)] private float sprintFrequencyGain = 1f;
+	[SerializeField]
+	[Range(0f, 5f)]
+	private float sprintAmplitudeGain = 2f;
+	[SerializeField]
+	[Range(0f, 5f)]
+	private float sprintFrequencyGain = 1f;
 
 	[Header("Player")]
-	[SerializeField] private FPSController _playerController;
+	[SerializeField]
+	private FPSController _playerController;
 
 	private CinemachineVirtualCamera _camera;
 	private CinemachineBasicMultiChannelPerlin noise;
@@ -41,13 +53,17 @@ public class ViewBobbing : MonoBehaviour
 			// Player is moving
 			if (_inputManager.GetPlayerSprint())
 			{
-				noise.m_AmplitudeGain = Mathf.Lerp(noise.m_AmplitudeGain, sprintAmplitudeGain, Time.time * transitionSpeed);
-				noise.m_FrequencyGain = Mathf.Lerp(noise.m_FrequencyGain, sprintFrequencyGain, Time.time * transitionSpeed);
+				noise.m_AmplitudeGain =
+					Mathf.Lerp(noise.m_AmplitudeGain, sprintAmplitudeGain, Time.time * transitionSpeed);
+				noise.m_FrequencyGain =
+					Mathf.Lerp(noise.m_FrequencyGain, sprintFrequencyGain, Time.time * transitionSpeed);
 			}
 			else
 			{
-				noise.m_AmplitudeGain = Mathf.Lerp(noise.m_AmplitudeGain, walkAmplitudeGain, Time.time * transitionSpeed);
-				noise.m_FrequencyGain = Mathf.Lerp(noise.m_FrequencyGain, walkFrequencyGain, Time.time * transitionSpeed);
+				noise.m_AmplitudeGain =
+					Mathf.Lerp(noise.m_AmplitudeGain, walkAmplitudeGain, Time.time * transitionSpeed);
+				noise.m_FrequencyGain =
+					Mathf.Lerp(noise.m_FrequencyGain, walkFrequencyGain, Time.time * transitionSpeed);
 			}
 		}
 		else

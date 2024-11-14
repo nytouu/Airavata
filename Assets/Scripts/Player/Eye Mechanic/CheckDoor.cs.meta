@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Scripts/CheckDoor.cs.meta
+guid: 61c917b0d20e6574599ea6bd9f6f2704
+========
+guid: 0219a3acf1044da7598e22e56c6ee247
+>>>>>>>> jd:Assets/Scripts/Managers/DayCycleManager.cs.meta
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences: []
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

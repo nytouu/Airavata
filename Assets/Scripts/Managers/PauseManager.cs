@@ -2,24 +2,32 @@ using UnityEngine;
 using Cinemachine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using NaughtyAttributes;
 
 public class PauseManager : Manager
 {
 	public const int PAUSE_LAYER = 8;
 
-	[SerializeField] private Camera mainCamera;
-	[SerializeField] private GameObject pauseMenu;
-	[SerializeField] private CinemachineInputProvider playerCamera;
+	[SerializeField]
+	private Camera mainCamera;
+	[SerializeField]
+	private GameObject pauseMenu;
+	[SerializeField]
+	private CinemachineInputProvider playerCamera;
 
-	[SerializeField] private Image image;
+	[SerializeField]
+	private Image image;
 
-	[SerializeField] private GameObject gameCrosshair;
+	[SerializeField]
+	private GameObject gameCrosshair;
 
 	[Tooltip("Building that will be shown in the main menu background.")]
-	[SerializeField] private GameObject backgroundBuildingPrefab;
+	[SerializeField]
+	private GameObject backgroundBuildingPrefab;
 	private GameObject _backgroundBuildingInstance;
 
-	[ShowOnly][SerializeField] private static bool _isPaused;
+	[ShowNonSerializedField]
+	private static bool _isPaused;
 	public static bool IsPaused => _isPaused;
 
 	private InputManager _inputManager;
@@ -59,7 +67,7 @@ public class PauseManager : Manager
 	public void PauseGame()
 	{
 		gameCrosshair.SetActive(false);
-		
+
 		// Pause only after snapshot was taken.
 		_frameSaver.GetLastFrame(texture => {
 			ApplySavedFrameToMenuBackground(texture);
@@ -103,7 +111,7 @@ public class PauseManager : Manager
 	{
 		if (image.sprite)
 			Destroy(image.sprite);
-	
-		image.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height), new Vector2(0.5f, 0.5f), 100.0f);
+		image.sprite = Sprite.Create(texture, new Rect(0.0f, 0.0f, texture.width, texture.height),
+									 new Vector2(0.5f, 0.5f), 100.0f);
 	}
 }

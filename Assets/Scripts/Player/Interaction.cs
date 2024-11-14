@@ -8,7 +8,9 @@ public class Interaction : MonoBehaviour
 	private InputManager _inputManager;
 	private RaycastHit _hit;
 
-	[SerializeField][Range(1f, 6f)] private float _rangeInteraction = 3f;
+	[SerializeField]
+	[Range(1f, 6f)]
+	private float _rangeInteraction = 3f;
 
 	private GameObject _lastObject;
 
@@ -36,11 +38,20 @@ public class Interaction : MonoBehaviour
 			if (isInteracting)
 			{
 				_hit.collider.gameObject.GetComponent<Interactible>()?.Interact();
+				_lastObject = null;
 			}
 		}
 		else
 		{
 			_lastObject?.GetComponent<Interactible>()?.SetHighlight(false);
+		}
+	}
+
+	private void OnTriggerEnter(Collider obj)
+	{
+		if (obj.TryGetComponent(typeof(Knowledge), out Component connaissance))
+		{
+			Destroy(connaissance.gameObject);
 		}
 	}
 }

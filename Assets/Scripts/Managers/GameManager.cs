@@ -23,7 +23,8 @@ public class GameManager : MonoBehaviour
 		DontDestroyOnLoad(gameObject);
 	}
 
-	public static T GetManager<T>() where T : Manager
+	public static T GetManager<T>()
+		where T : Manager
 	{
 		foreach (Manager manager in _instance.managers)
 		{

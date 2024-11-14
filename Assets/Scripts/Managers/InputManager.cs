@@ -12,12 +12,12 @@ public class InputManager : Manager
 		Cursor.lockState = CursorLockMode.Locked;
 	}
 
-	private void OnEnable()
+	public void OnEnable()
 	{
 		_playerInput.Enable();
 	}
 
-	private void OnDisable()
+	public void OnDisable()
 	{
 		_playerInput.Disable();
 	}
@@ -36,13 +36,13 @@ public class InputManager : Manager
 	/* /// <summary> */
 	/* /// Get the player look delta input */
 	/* /// </summary> */
-	/* public Vector2 GetPlayerLook() */
-	/* { */
-	/* 	if (!PauseManager.IsPaused) */
-	/* 		return _playerInput.Player.Look.ReadValue<Vector2>(); */
-	/* 	else */
-	/* 		return new Vector2(0f, 0f); */
-	/* } */
+	public Vector2 GetPlayerLook()
+	{
+		if (!PauseManager.IsPaused)
+			return _playerInput.Player.Look.ReadValue<Vector2>();
+		else
+			return new Vector2(0f, 0f);
+	}
 
 	/// <summary>
 	/// Get player jumping input
@@ -78,7 +78,6 @@ public class InputManager : Manager
 			return false;
 	}
 
-
 	/// <summary>
 	/// Get player rising input
 	/// </summary>
@@ -111,5 +110,13 @@ public class InputManager : Manager
 	public bool GetPause()
 	{
 		return _playerInput.Player.Pause.triggered;
+	}
+
+	/// <summary>
+	/// Returns true if player is moving
+	/// </summary>
+	public bool PlayerIsMoving()
+	{
+		return _playerInput.Player.Movement.ReadValue<Vector2>() != new Vector2(0, 0);
 	}
 }

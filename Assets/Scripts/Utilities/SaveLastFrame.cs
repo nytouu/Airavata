@@ -14,7 +14,6 @@ public class SaveLastFrame : MonoBehaviour
 		renderTexture.useMipMap = false;
 		renderTexture.antiAliasing = 1;
 	}
-
 	/// <summary>
 	///  Helper method to get a snapshot of a frame
 	/// </summary>

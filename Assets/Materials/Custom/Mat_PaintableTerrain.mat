@@ -183,9 +183,9 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _POM_Amplitude: 3
-    - _POM_Distance_Cutoff: 0.121
-    - _POM_Distance_Power: 5
-    - _POM_Max_Samples: 256
+    - _POM_Distance_Cutoff: 0.08
+    - _POM_Distance_Power: 0.71
+    - _POM_Max_Samples: 32
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

@@ -9,10 +9,17 @@ public class FreeCamController : MonoBehaviour
 	private InputManager _inputManager;
 	private Transform _orientation;
 
-	[SerializeField] private Transform mainCameraTransform;
-	[SerializeField][Range(0.1f, 10f)] private float walkSpeed = 2.0f;
-	[SerializeField][Range(2f, 20f)] private float sprintSpeed = 5.0f;
-	[SerializeField][Range(2f, 15f)] private float horizontalSpeed = 5.0f;
+	[SerializeField]
+	private Transform mainCameraTransform;
+	[SerializeField]
+	[Range(0.1f, 10f)]
+	private float walkSpeed = 2.0f;
+	[SerializeField]
+	[Range(2f, 20f)]
+	private float sprintSpeed = 5.0f;
+	[SerializeField]
+	[Range(2f, 15f)]
+	private float horizontalSpeed = 5.0f;
 
 	private void Start()
 	{
@@ -40,7 +47,7 @@ public class FreeCamController : MonoBehaviour
 		if (_inputManager.GetPlayerRise() != 0f)
 		{
 			_playerVelocity.y += horizontalSpeed;
-		} 
+		}
 		else if (_inputManager.GetPlayerDescend() != 0f)
 		{
 			_playerVelocity.y -= horizontalSpeed;
