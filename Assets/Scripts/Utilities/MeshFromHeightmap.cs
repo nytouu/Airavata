@@ -65,8 +65,8 @@ public class MeshFromHeightmap : MonoBehaviour
 	[DisableIf(nameof(autoMeshUpdateEnabled))]
 	public void RegenerateMesh()
 	{
-		if (terrain == null) { Debug.Log("No Terrain defined, please define one"); return; }
-		if (material == null) { Debug.Log("No Material defined, please define one"); return; }
+		if (terrain == null) { Debug.LogWarning("No Terrain defined, please define one", gameObject); return; }
+		if (material == null) { Debug.LogWarning("No Material defined, please define one", gameObject); return; }
 
 		_meshFilter.mesh = null;
 		_meshFilter.sharedMesh = null;
