@@ -119,4 +119,12 @@ public class InputManager : Manager
 	{
 		return _playerInput.Player.Movement.ReadValue<Vector2>() != new Vector2(0, 0);
 	}
+
+	/// <summary>
+	/// Get Toggle Fly button
+	/// </summary>
+	public bool GetFlyMode()
+	{
+		return _playerInput.Player.ToggleFlyMode.triggered;
+	}
 }

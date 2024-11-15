@@ -79,17 +79,27 @@ public class MeshFromHeightmap : MonoBehaviour
 		_vertices = new Vector3[_verticesCount];
 		_uvs = new Vector2[_verticesCount];
 
+		Bounds bounds = terrain.terrainData.bounds;
+		float offsetX = bounds.size.x / 2f + terrain.transform.position.x;
+		float offsetY = bounds.size.z / 2f + terrain.transform.position.z;
+
 		int i = 0;
 		for (int d = 0; d <= width; d++)
 		{
 			for (int w = 0; w <= width; w++)
 			{
-				Vector3 positionToSample = new Vector3(terrain.transform.position.x * w, 2f, terrain.transform.position.x * d);
+				float x = (w - width / 2f) * size / width;
+				float z = (d - width / 2f) * size / width;
+
+				float sampleX = ((w - width / 2f) * size / width) + offsetX;
+				float sampleZ = ((d - width / 2f) * size / width) + offsetY;
 
 				Vector3 position =
-					new Vector3((w - width / 2f) * size / width,
-								terrain.SampleHeight(transform.localToWorldMatrix * new Vector2(w, d)) * intensity,
-								(d - width / 2f) * size / width);
+					new Vector3(
+						(w - width / 2f) * size / width,
+						terrain.SampleHeight(new Vector3(sampleX, 0f, sampleZ)) * intensity,
+						(d - width / 2f) * size / width
+					);
 				_vertices[i] = position;
 				_uvs[i] = new Vector2(w - width / 2f, d - width / 2f);
 

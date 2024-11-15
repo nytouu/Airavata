@@ -98,6 +98,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ToggleFlyMode"",
+                    ""type"": ""Button"",
+                    ""id"": ""4c32d756-7cc9-4b77-b6f5-90734306a6b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -331,6 +340,17 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Pause"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3c69d56e-488b-4fdc-a307-a26ffcbe47fa"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToggleFlyMode"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -347,6 +367,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_Player_Rise = m_Player.FindAction("Rise", throwIfNotFound: true);
         m_Player_Descend = m_Player.FindAction("Descend", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ToggleFlyMode = m_Player.FindAction("ToggleFlyMode", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +437,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Rise;
     private readonly InputAction m_Player_Descend;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ToggleFlyMode;
     public struct PlayerActions
     {
         private @PlayerInput m_Wrapper;
@@ -428,6 +450,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @Rise => m_Wrapper.m_Player_Rise;
         public InputAction @Descend => m_Wrapper.m_Player_Descend;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ToggleFlyMode => m_Wrapper.m_Player_ToggleFlyMode;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -461,6 +484,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @ToggleFlyMode.started += instance.OnToggleFlyMode;
+            @ToggleFlyMode.performed += instance.OnToggleFlyMode;
+            @ToggleFlyMode.canceled += instance.OnToggleFlyMode;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -489,6 +515,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @ToggleFlyMode.started -= instance.OnToggleFlyMode;
+            @ToggleFlyMode.performed -= instance.OnToggleFlyMode;
+            @ToggleFlyMode.canceled -= instance.OnToggleFlyMode;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -516,5 +545,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnRise(InputAction.CallbackContext context);
         void OnDescend(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnToggleFlyMode(InputAction.CallbackContext context);
     }
 }
