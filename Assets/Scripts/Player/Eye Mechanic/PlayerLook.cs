@@ -197,12 +197,11 @@ public class PlayerLook : MonoBehaviour
 			}
 		}
 
-		// FIXME: Move seulement l'élément focus plutôt que tout les checkEye de la scène.
-		/* if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn) */
-		/* { */
-		/* 	_checkObject.transform.position = */
-		/* 		Vector3.MoveTowards(_checkObject.transform.position, */
-		/* 							new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f); */
-		/* } */
+		if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn)
+		{
+			_checkObject.transform.position =
+				Vector3.MoveTowards(_checkObject.transform.position,
+									new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f);
+		}
 	}
 }

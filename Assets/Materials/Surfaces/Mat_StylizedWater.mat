@@ -76,14 +76,14 @@ Material:
     - _Show_Water_Depth: 0
     - _SrcBlend: 5
     - _Surface: 1
-    - _Water_Depth: 2.4
+    - _Water_Depth: 10
     - _Wave_Scale: 9
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
     m_Colors:
-    - _Deep_Water_Color: {r: 0.1196155, g: 0.63775575, b: 0.9056604, a: 0.28627452}
+    - _Deep_Water_Color: {r: 0.31021938, g: 0.6222745, b: 0.7783019, a: 0.9137255}
     - _Foam_Color: {r: 2.9960787, g: 2.9960787, b: 2.9960787, a: 0.7019608}
     - _Horizon_Color: {r: 0.49411762, g: 1, b: 0.9279376, a: 0.6392157}
-    - _Shallow_Water_Color: {r: 0.16176799, g: 0.41430497, b: 0.5235849, a: 0.52156866}
+    - _Shallow_Water_Color: {r: 0.18503024, g: 0.5478352, b: 0.7004717, a: 0.52156866}
   m_BuildTextureStacks: []
