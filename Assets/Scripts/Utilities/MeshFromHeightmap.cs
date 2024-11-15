@@ -29,9 +29,9 @@ public class MeshFromHeightmap : MonoBehaviour
 	private float size = 100f;
 
 	[OnValueChanged(nameof(OnValueChanged))]
-	[Range(0f, 1000f)]
+	[Range(0f, 3f)]
 	[SerializeField]
-	private float intensity = 15f;
+	private float intensity = 1f;
 
 	[OnValueChanged(nameof(OnValueChanged))]
 	[SerializeField]
@@ -65,6 +65,9 @@ public class MeshFromHeightmap : MonoBehaviour
 	[DisableIf(nameof(autoMeshUpdateEnabled))]
 	public void RegenerateMesh()
 	{
+		if (terrain == null) { Debug.Log("No Terrain defined, please define one"); return; }
+		if (material == null) { Debug.Log("No Material defined, please define one"); return; }
+
 		_meshFilter.mesh = null;
 		_meshFilter.sharedMesh = null;
 		_meshRenderer.material = null;
