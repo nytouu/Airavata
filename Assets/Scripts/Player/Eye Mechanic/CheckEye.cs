@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckEye : CheckObject
@@ -9,7 +8,6 @@ public class CheckEye : CheckObject
 	void Start()
 	{
 		objectToCheck = door;
-		code = new List<int> { 1, 2, 3, 1 };
 	}
 
 	void Update()

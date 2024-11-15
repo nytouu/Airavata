@@ -56,7 +56,7 @@ Material:
     - _Blend: 0
     - _CastShadows: 1
     - _Cull: 2
-    - _Displacement_Noise_Scale: 0.004
+    - _Displacement_Noise_Scale: 0.005
     - _Displacement_Scale: 9.38
     - _Displacement_Speed: 0.06
     - _DstBlend: 10
@@ -70,14 +70,14 @@ Material:
     - _Posterize_Steps: 92
     - _QueueControl: 1
     - _QueueOffset: 10
-    - _Refraction_Scale: 0.2
+    - _Refraction_Scale: 0.097
     - _Refraction_Speed: -0.05
-    - _Refraction_Strength: 0.092
+    - _Refraction_Strength: 0.029
     - _Show_Water_Depth: 0
     - _SrcBlend: 5
     - _Surface: 1
     - _Water_Depth: 2.4
-    - _Wave_Scale: 0.44
+    - _Wave_Scale: 9
     - _ZTest: 4
     - _ZWrite: 0
     - _ZWriteControl: 0
