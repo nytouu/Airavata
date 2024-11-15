@@ -16,7 +16,7 @@ public class BlockingRock : Interactible
 		_animator.Play("Move");
 		foreach (Windmill windmill in windmills)
 		{
-			windmill.SetMoving(true);
+			windmill.SetMoving(true, false);
 		}
 
 		Destroy(this);
