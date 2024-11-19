@@ -182,10 +182,10 @@ Material:
     - _Main_Smoothness: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _POM_Amplitude: 0
+    - _POM_Amplitude: 2.98
     - _POM_Distance_Cutoff: 0.042
     - _POM_Distance_Power: 0.03
-    - _POM_Max_Samples: 0
+    - _POM_Max_Samples: 256
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
