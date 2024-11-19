@@ -3,7 +3,7 @@ using NaughtyAttributes;
 
 [ExecuteInEditMode]
 [RequireComponent(typeof(MeshFilter), (typeof(MeshRenderer)))]
-public class MeshFromHeightmap : MonoBehaviour
+public class MeshFromTerrain : MonoBehaviour
 {
 	private enum MeshResolution
 	{
@@ -139,12 +139,12 @@ public class MeshFromHeightmap : MonoBehaviour
 
 		mesh.SetVertices(_vertices);
 		mesh.SetIndices(triangles, MeshTopology.Triangles, 0);
-		mesh.RecalculateUVDistributionMetrics();
 		mesh.SetUVs(0, _uvs);
+		mesh.RecalculateUVDistributionMetrics();
 
 		/* if (verticesColors != null) */
 		/* 	mesh.colors = verticesColors; */
-		mesh.Optimize();
+		/* mesh.Optimize(); */
 		mesh.RecalculateTangents();
 		mesh.RecalculateNormals();
 
