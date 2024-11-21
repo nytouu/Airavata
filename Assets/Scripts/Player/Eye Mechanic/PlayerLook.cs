@@ -16,8 +16,8 @@ public class PlayerLook : MonoBehaviour
 	private float _timer = 0.0f;
 	private float _timeLimit = 1.0f;
 	private int _danceValor = 0;
-
-	private Vector3 _eyePos;
+	
+	private Vector3 _checkPos;
 
 	// Start is called before the first frame update
 	void Start()
@@ -44,6 +44,7 @@ public class PlayerLook : MonoBehaviour
 				{
 					_checkObject = hit.transform.GetComponent<CheckEye>();
 					_checkObject.timer += Time.deltaTime;
+					_checkPos = _checkObject.transform.position;
 
 					if (_checkObject.timer >= _checkObject.timeLimit)
 					{
@@ -123,7 +124,21 @@ public class PlayerLook : MonoBehaviour
 					}
 				}
 			}
+			
+			//CheckEye qui suit le regard
+			if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn && !hit.transform.gameObject.TryGetComponent(typeof(CheckEye), out Component componenttest))
+			{
+				_checkObject.transform.position = Vector3.MoveTowards(_checkObject.transform.position,
+					new Vector3(hit.point.x, hit.point.y, hit.point.z), 0.0005f);
+			}
+			
 		}
+		//Raycast ne touche rien
+		else if (_checkObject!=null)
+		{
+			_checkObject.transform.position = _checkPos;
+		}
+		
 
 		// Annulation Oeil
 		if (_playerPos != new Vector3(0, 10000, 0) && _playerPos != _player.transform.position ||
@@ -148,8 +163,8 @@ public class PlayerLook : MonoBehaviour
 			else if (_checkObject != null && _checkObject.GetType() != typeof(CheckFountain))
 			{
 				_checkObject.codeTry.Clear();
+				_checkObject.transform.position = _checkPos;
 				_checkObject = null;
-				_fountainActive = false;
 				_eyeOn = false;
 				this.gameObject.GetComponent<Eye>().EyeDeactivate();
 				_playerPos = new Vector3(0, 10000, 0);
@@ -197,11 +212,6 @@ public class PlayerLook : MonoBehaviour
 			}
 		}
 
-		if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn)
-		{
-			_checkObject.transform.position =
-				Vector3.MoveTowards(_checkObject.transform.position,
-									new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f);
-		}
+		
 	}
 }
