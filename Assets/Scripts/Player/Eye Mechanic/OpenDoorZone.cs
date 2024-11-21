@@ -8,7 +8,7 @@ public class OpenDoorZone : MonoBehaviour
 {
     public UnityEvent onOpenAction;
     // Start is called before the first frame update
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         onOpenAction.Invoke();
     }
