@@ -12,7 +12,7 @@ public class Interaction : MonoBehaviour
 	[Range(1f, 6f)]
 	private float _rangeInteraction = 3f;
 
-	private GameObject _lastObject;
+	private Interactible _lastObject;
 
 	// Start is called before the first frame update
 	void Start()
@@ -21,7 +21,7 @@ public class Interaction : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void FixedUpdate()
+	void Update()
 	{
 		bool isInteracting = _inputManager.GetPlayerInteraction();
 
@@ -32,19 +32,35 @@ public class Interaction : MonoBehaviour
 
 		if (Physics.Raycast(ray, out _hit, _rangeInteraction))
 		{
-			_hit.collider.gameObject.GetComponent<Interactible>()?.SetHighlight(true);
-			_lastObject = _hit.collider.gameObject;
+			Interactible collided = _hit.collider.GetComponent<Interactible>();
+			
+			if (collided != null)
+			{
+				collided.SetHighlight(true);
+            	_lastObject = collided;	
+			}
+			else
+			{
+				ResetLastObject();
+			}
 
 			if (isInteracting)
 			{
-				_hit.collider.gameObject.GetComponent<Interactible>()?.Interact();
-				_lastObject = null;
+				_lastObject?.Interact();
+				ResetLastObject();
 			}
 		}
 		else
 		{
-			_lastObject?.GetComponent<Interactible>()?.SetHighlight(false);
+			ResetLastObject();
 		}
+		
+	}
+
+	private void ResetLastObject()
+	{
+		_lastObject?.SetHighlight(false);
+		_lastObject = null;
 	}
 
 	private void OnTriggerEnter(Collider obj)

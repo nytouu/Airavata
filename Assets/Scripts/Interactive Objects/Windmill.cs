@@ -23,4 +23,6 @@ public class Windmill : MonoBehaviour
         else
             _animator.Play("Not Moving");
 	}
+
+	
 }
