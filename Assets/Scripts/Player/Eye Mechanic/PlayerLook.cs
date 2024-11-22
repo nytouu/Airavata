@@ -17,6 +17,8 @@ public class PlayerLook : MonoBehaviour
 	private float _timer = 0.0f;
 	private float _timeLimit = 1.0f;
 	private int _danceValor = 0;
+	private Knowledge _knowledge;
+	private KnowledgeManager _knowledgeManager;
 	
 	private Vector3 _checkPos;
 
@@ -26,6 +28,7 @@ public class PlayerLook : MonoBehaviour
 		_player = FindFirstObjectByType<CharacterController>();
 		_inputManager = GameManager.GetManager<InputManager>();
 		_playerOnEyePlace = FindObjectOfType<PlayerOnEyePlace>();
+		_knowledgeManager = FindFirstObjectByType<KnowledgeManager>();
 		_lookDistance = Mathf.Infinity;
 	}
 
@@ -134,6 +137,19 @@ public class PlayerLook : MonoBehaviour
 					new Vector3(hit.point.x, hit.point.y, hit.point.z), 0.0005f);
 			}
 			
+			//Detection knowledge
+			if (hit.transform.gameObject.TryGetComponent(typeof(Knowledge), out Component componentK))
+			{
+				_knowledge = hit.transform.GetComponent<Knowledge>();
+				_knowledge.time+=Time.deltaTime;
+				if (_knowledge.time >= _knowledge.timeLimit)
+				{
+					if (!_knowledgeManager.listKnowledge.Contains(_knowledge.id))
+					{
+						_knowledgeManager.listKnowledge.Add(_knowledge.id);
+					}
+				}
+			}
 		}
 		//Raycast ne touche rien
 		else if (_checkObject!=null && _checkObject.GetType() == typeof(CheckEye))
@@ -171,23 +187,6 @@ public class PlayerLook : MonoBehaviour
 				_playerPos = new Vector3(0, 10000, 0);
 			}
 		}
-
-		// Eye Range
-		/*if (_player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
-		{
-			if (_player.gameObject.GetComponent<PlayerOnEyePlace>().eyePlace.GetType() == typeof(EyePlacePillar))
-			{
-				_lookDistance = 50.0f;
-			}
-			else
-			{
-				_lookDistance = 8f;
-			}
-		}
-		else
-		{
-			_lookDistance = 1.65f;
-		}*/
 		// Detection Input Fontaine
 		if (_fountainActive && _checkObject.GetType() == typeof(CheckFountain))
 		{

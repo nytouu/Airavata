@@ -29,10 +29,10 @@ public class Eye : MonoBehaviour
 		volume.weight = 0.5f;
 		/* foreach (Transform childTransform in _hiddens.transform) */
 		/* { */
-		/* 	if (childTransform.position.x >= _player.transform.position.x - 20 && */
-		/* 		childTransform.position.x <= _player.transform.position.x + 20 && */
-		/* 		childTransform.position.z >= _player.transform.position.z - 20 && */
-		/* 		childTransform.position.z <= _player.transform.position.z + 20) */
+		/* 	if (childTransform.position.x >= _player.transform.position.x - 10 && */
+		/* 		childTransform.position.x <= _player.transform.position.x + 10 && */
+		/* 		childTransform.position.z >= _player.transform.position.z - 10 && */
+		/* 		childTransform.position.z <= _player.transform.position.z + 10) */
 		/* 	{ */
 		/* 		childTransform.gameObject.SetActive(true); */
 		/* 	} */
@@ -40,10 +40,10 @@ public class Eye : MonoBehaviour
 
 		/* foreach (Transform childTransform in _visible.transform) */
 		/* { */
-		/* 	if (childTransform.position.x >= _player.transform.position.x - 20 && */
-		/* 		childTransform.position.x <= _player.transform.position.x + 20 && */
-		/* 		childTransform.position.z >= _player.transform.position.z - 20 && */
-		/* 		childTransform.position.z <= _player.transform.position.z + 20) */
+		/* 	if (childTransform.position.x >= _player.transform.position.x - 10 && */
+		/* 		childTransform.position.x <= _player.transform.position.x + 10 && */
+		/* 		childTransform.position.z >= _player.transform.position.z - 10 && */
+		/* 		childTransform.position.z <= _player.transform.position.z + 10) */
 		/* 	{ */
 		/* 		childTransform.gameObject.SetActive(false); */
 		/* 	} */
