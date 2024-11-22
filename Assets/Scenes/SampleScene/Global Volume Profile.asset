@@ -15,25 +15,25 @@ MonoBehaviour:
   active: 1
   distance:
     m_OverrideState: 1
-    m_Value: 128
+    m_Value: 96
   baseHeight:
     m_OverrideState: 0
-    m_Value: 10
+    m_Value: 39.9
   maximumHeight:
     m_OverrideState: 0
-    m_Value: 30.3
+    m_Value: 39.9
   enableGround:
     m_OverrideState: 1
     m_Value: 1
   groundHeight:
     m_OverrideState: 1
-    m_Value: 18
+    m_Value: 13.6
   density:
     m_OverrideState: 1
-    m_Value: 0.6
+    m_Value: 1
   attenuationDistance:
     m_OverrideState: 0
-    m_Value: 51.11
+    m_Value: 153.7
   enableMainLightContribution:
     m_OverrideState: 1
     m_Value: 1
@@ -42,22 +42,22 @@ MonoBehaviour:
     m_Value: 0
   mainLightScattering:
     m_OverrideState: 1
-    m_Value: 0.4
+    m_Value: 0.25
   mainLightColorTint:
     m_OverrideState: 1
-    m_Value: {r: 1.3041189, g: 0.7256598, b: 0.31372666, a: 1}
+    m_Value: {r: 1.1486983, g: 0.67315066, b: 0.32781252, a: 1}
   enableAdditionalLightsContribution:
     m_OverrideState: 0
-    m_Value: 0
+    m_Value: 1
   additionalLightsAnisotropy:
     m_OverrideState: 1
-    m_Value: 0.174
+    m_Value: 0.723
   additionalLightsScattering:
     m_OverrideState: 1
-    m_Value: 13.42
+    m_Value: 16
   additionalLightsRadius:
     m_OverrideState: 1
-    m_Value: 0.176
+    m_Value: 1
   maxSteps:
     m_OverrideState: 1
     m_Value: 16
