@@ -27,7 +27,7 @@ public class CheckObject : MonoBehaviour
 		{
 			open = true;
 			onOpenAction.Invoke();
-			Destroy(objectToCheck);
+			//Destroy(objectToCheck);
 			/* objectToCheck.transform.position = */
 			/* 	new Vector3(objectToCheck.transform.position.x + 1.12f, objectToCheck.transform.position.y, */
 			/* 				objectToCheck.transform.position.z); */

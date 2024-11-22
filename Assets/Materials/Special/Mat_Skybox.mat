@@ -140,9 +140,9 @@ Material:
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
     - _Sun_Exponent: 70
-    - _Sun_Intensity: 120
+    - _Sun_Intensity: 100
     - _Sun_Radius_A: 0.05
-    - _Sun_Radius_B: 0.3
+    - _Sun_Radius_B: 0.112
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
