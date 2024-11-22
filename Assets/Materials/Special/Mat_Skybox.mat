@@ -21,7 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Skybox
-  m_Shader: {fileID: -6465566751694194690, guid: d8541e409772701b7b3decfcf76ed4a0, type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: d8541e409772701b7b3decfcf76ed4a0,
+    type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -104,22 +105,14 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaToMask: 0
-    - _Big_Cloud_Intensity: 1.4
-    - _Big_Cloud_Randomness: 2.4
-    - _Big_Cloud_Scale: 0.53
-    - _Big_Cloud_Speed: 0.03
     - _Blend: 0
     - _BlendModePreserveSpecular: 1
     - _BumpScale: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
-    - _Cloud_Clamp_Value: 0.8
     - _Cloud_Density: 1.28
-    - _Cloud_Max_Intensity: 0.8
-    - _Cloud_Normal_Intensity: 1
-    - _Cloud_Power: 0.75
-    - _Cloud_Randomness: 5
-    - _Cloud_Scale: 0.46
+    - _Cloud_Power: 1.4
+    - _Cloud_Scale: 0.24
     - _Cloud_Speed: 0.027
     - _Cull: 2
     - _Cutoff: 0.5
@@ -127,12 +120,11 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _DstBlendAlpha: 0
-    - _Early_Night_Factor: -0.8
     - _EnvironmentReflections: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Horizon_Blend: 2.3
+    - _Horizon_Blend: 5.4
     - _Metallic: 0
     - _Nadir_Blend: 0.8
     - _OcclusionStrength: 1
@@ -140,40 +132,22 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _Small_Cloud_Blending: 0.856
-    - _Small_Cloud_Intensity: 1.09
-    - _Small_Cloud_Randomness: 3.6
-    - _Small_Cloud_Scale: 2.22
-    - _Small_Cloud_Speed: 0.09
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _SrcBlendAlpha: 1
-    - _Sun_Exponent: 70
-    - _Sun_Intensity: 50
-    - _Sun_Radius_A: 0.05
-    - _Sun_Radius_B: 0.081
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _Zenith_Blend: 0.4
+    - _Zenith_Blend: 0.3
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Cloud_Color: {r: 3.211117, g: 2.740561, b: 1.3859302, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _Day_Cloud_Color: {r: 1.622464, g: 1.8049674, b: 1.8443024, a: 0}
-    - _Day_Ground_Color: {r: 1, g: 0.6940776, b: 0.4941176, a: 0}
-    - _Day_Horizon_Color: {r: 0.854902, g: 0.6603026, b: 0.3215687, a: 0}
-    - _Day_Sky_Color: {r: 0, g: 0.35566974, b: 1, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _Ground_Color: {r: 0.6509434, g: 0.3381111, b: 0.17714302, a: 0}
     - _Horizon_Color: {r: 1.3108158, g: 1.2771263, b: 0.72060555, a: 0}
-    - _Night_Cloud_Color: {r: 0.4398585, g: 0.4893362, b: 0.5, a: 0}
-    - _Night_Ground_Color: {r: 0.2264151, g: 0.1521521, b: 0.1035956, a: 0}
-    - _Night_Horizon_Color: {r: 0.2117647, g: 0.10232, b: 0.04313726, a: 0}
-    - _Night_Sky_Color: {r: 0.1238875, g: 0.1919675, b: 0.3018868, a: 0}
     - _Sky_Color: {r: 0, g: 0.83656675, b: 1.8443025, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
-    - _Sun_Color: {r: 0.5990566, g: 0.41279206, b: 0.20769179, a: 0}
   m_BuildTextureStacks: []
