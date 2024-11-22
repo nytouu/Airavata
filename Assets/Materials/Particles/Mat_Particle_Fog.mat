@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_Particle_Fog
-  m_Shader: {fileID: -6465566751694194690, guid: f68e7893652e9a5cab668a785482a312,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: f68e7893652e9a5cab668a785482a312, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -125,7 +124,7 @@ Material:
     - _CameraFarFadeDistance: 2
     - _CameraNearFadeDistance: 0
     - _Camera_Depth_Fade_Offset: -5
-    - _Camera_Depth_Fade_Range: 34.6
+    - _Camera_Depth_Fade_Range: 13.7
     - _CastShadows: 1
     - _ClearCoatMask: 0
     - _ClearCoatSmoothness: 0
@@ -151,7 +150,7 @@ Material:
     - _Metallic: 0
     - _Mode: 2
     - _OcclusionStrength: 1
-    - _Opacity: 0.527
+    - _Opacity: 1
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -167,7 +166,7 @@ Material:
     - _SrcBlendAlpha: 1
     - _Surface: 0
     - _Surface_Depth_Factor: 0
-    - _Surface_Depth_Fade: 0.0021
+    - _Surface_Depth_Fade: 0.0034
     - _WorkflowMode: 1
     - _ZTest: 4
     - _ZWrite: 1
@@ -178,7 +177,7 @@ Material:
     - _Color: {r: 0.91102743, g: 0.91102743, b: 0.91102743, a: 1}
     - _ColorAddSubDiff: {r: -1, g: 0, b: 0, a: 0}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _Particle_Color: {r: 1.4002723, g: 0.49341667, b: 0.2146644, a: 0}
+    - _Particle_Color: {r: 2.6082387, g: 0.9190701, b: 0.39984792, a: 0}
     - _SoftParticleFadeParams: {r: 0, g: 0, b: 0, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _TintColor: {r: 0.7429246, g: 0.6041244, b: 0.38898408, a: 0.1254902}
