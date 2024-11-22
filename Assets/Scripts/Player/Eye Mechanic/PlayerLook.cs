@@ -39,6 +39,11 @@ public class PlayerLook : MonoBehaviour
 				if (_checkObject != null)
 				{
 					_checkObject.codeTry.Clear();
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+					_checkObject.codeTryObjects.Clear();
 				}
 				if (!_eyeOn && _playerOnEyePlace.onPlace)
 				{
@@ -68,6 +73,14 @@ public class PlayerLook : MonoBehaviour
 					_checkObject.codeTry[_checkObject.codeTry.Count - 1] != hit.transform.GetComponent<CheckDoor>().id)
 				{
 					_checkObject.codeTry.Add(hit.transform.GetComponent<CheckDoor>().id);
+					_checkObject.codeTryObjects.Add(hit.transform.gameObject);
+
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+
+					hit.transform.GetComponent<CheckDoor>().SetHighlight(true);
 				}
 			}
 
@@ -96,6 +109,7 @@ public class PlayerLook : MonoBehaviour
 															   hit.transform.GetComponent<UpDownFountain>().id)
 					{
 						_checkObject.codeTry.Add(hit.transform.GetComponent<UpDownFountain>().id);
+						_checkObject.codeTryObjects.Add(hit.transform.gameObject);
 					}
 				}
 			}
@@ -137,6 +151,11 @@ public class PlayerLook : MonoBehaviour
 				if (!_playerOnEyePlace.onPlace || _checkObject.open)
 				{
 					_checkObject.codeTry.Clear();
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+					_checkObject.codeTryObjects.Clear();
 					_checkObject = null;
 					_fountainActive = false;
 					_eyeOn = false;
@@ -148,6 +167,11 @@ public class PlayerLook : MonoBehaviour
 			else if (_checkObject != null && _checkObject.GetType() != typeof(CheckFountain))
 			{
 				_checkObject.codeTry.Clear();
+				foreach (GameObject item in _checkObject.codeTryObjects)
+				{
+					item.GetComponent<CheckDoor>()?.SetHighlight(false);
+				}
+				_checkObject.codeTryObjects.Clear();
 				_checkObject = null;
 				_fountainActive = false;
 				_eyeOn = false;

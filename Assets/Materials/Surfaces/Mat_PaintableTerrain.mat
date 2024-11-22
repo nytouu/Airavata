@@ -21,8 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Mat_PaintableTerrain
-  m_Shader: {fileID: -6465566751694194690, guid: 688933a7fbc8cb31c90d314c2c4d57d0,
-    type: 3}
+  m_Shader: {fileID: -6465566751694194690, guid: 688933a7fbc8cb31c90d314c2c4d57d0, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -182,10 +181,10 @@ Material:
     - _Main_Smoothness: 0
     - _Metallic: 0
     - _OcclusionStrength: 1
-    - _POM_Amplitude: 2.98
-    - _POM_Distance_Cutoff: 0.042
-    - _POM_Distance_Power: 0.03
-    - _POM_Max_Samples: 256
+    - _POM_Amplitude: 0
+    - _POM_Distance_Cutoff: 0.05
+    - _POM_Distance_Power: 0
+    - _POM_Max_Samples: 0
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0

@@ -9,6 +9,7 @@ public class CheckObject : MonoBehaviour
 	protected List<int> code;
 	[SerializeField]
 	public List<int> codeTry;
+	public List<GameObject> codeTryObjects;
 	protected GameObject objectToCheck;
 	public float timer = 0f;
 	public float timeLimit = 0f;
