@@ -182,8 +182,8 @@ Material:
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _POM_Amplitude: 0
-    - _POM_Distance_Cutoff: 0.05
-    - _POM_Distance_Power: 0
+    - _POM_Distance_Cutoff: 0.02
+    - _POM_Distance_Power: 10
     - _POM_Max_Samples: 0
     - _Parallax: 0.005
     - _QueueControl: 0
@@ -192,7 +192,7 @@ Material:
     - _Render_Depth_Only: 1
     - _Render_Depth_Test: 0
     - _Second_Metallic: 0
-    - _Second_Rough_value: 0.6
+    - _Second_Rough_value: 0.872
     - _Second_Smoothness: 0.45
     - _Smoothness: 0.4
     - _SmoothnessTextureChannel: 0
