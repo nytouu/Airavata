@@ -9,6 +9,7 @@ public class CheckObject : MonoBehaviour
 	protected List<int> code;
 	[SerializeField]
 	public List<int> codeTry;
+	public List<GameObject> codeTryObjects;
 	protected GameObject objectToCheck;
 	public float timer = 0f;
 	public float timeLimit = 0f;
@@ -27,6 +28,9 @@ public class CheckObject : MonoBehaviour
 			open = true;
 			onOpenAction.Invoke();
 			Destroy(objectToCheck);
+			/* objectToCheck.transform.position = */
+			/* 	new Vector3(objectToCheck.transform.position.x + 1.12f, objectToCheck.transform.position.y, */
+			/* 				objectToCheck.transform.position.z); */
 		}
 	}
 

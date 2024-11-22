@@ -16,8 +16,8 @@ public class PlayerLook : MonoBehaviour
 	private float _timer = 0.0f;
 	private float _timeLimit = 1.0f;
 	private int _danceValor = 0;
-	
-	private Vector3 _checkPos;
+
+	private Vector3 _eyePos;
 
 	// Start is called before the first frame update
 	void Start()
@@ -39,12 +39,16 @@ public class PlayerLook : MonoBehaviour
 				if (_checkObject != null)
 				{
 					_checkObject.codeTry.Clear();
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+					_checkObject.codeTryObjects.Clear();
 				}
 				if (!_eyeOn && _playerOnEyePlace.onPlace)
 				{
 					_checkObject = hit.transform.GetComponent<CheckEye>();
 					_checkObject.timer += Time.deltaTime;
-					_checkPos = _checkObject.transform.position;
 
 					if (_checkObject.timer >= _checkObject.timeLimit)
 					{
@@ -69,6 +73,14 @@ public class PlayerLook : MonoBehaviour
 					_checkObject.codeTry[_checkObject.codeTry.Count - 1] != hit.transform.GetComponent<CheckDoor>().id)
 				{
 					_checkObject.codeTry.Add(hit.transform.GetComponent<CheckDoor>().id);
+					_checkObject.codeTryObjects.Add(hit.transform.gameObject);
+
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+
+					hit.transform.GetComponent<CheckDoor>().SetHighlight(true);
 				}
 			}
 
@@ -97,6 +109,7 @@ public class PlayerLook : MonoBehaviour
 															   hit.transform.GetComponent<UpDownFountain>().id)
 					{
 						_checkObject.codeTry.Add(hit.transform.GetComponent<UpDownFountain>().id);
+						_checkObject.codeTryObjects.Add(hit.transform.gameObject);
 					}
 				}
 			}
@@ -124,21 +137,7 @@ public class PlayerLook : MonoBehaviour
 					}
 				}
 			}
-			
-			//CheckEye qui suit le regard
-			if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn && !hit.transform.gameObject.TryGetComponent(typeof(CheckEye), out Component componenttest))
-			{
-				_checkObject.transform.position = Vector3.MoveTowards(_checkObject.transform.position,
-					new Vector3(hit.point.x, hit.point.y, hit.point.z), 0.0005f);
-			}
-			
 		}
-		//Raycast ne touche rien
-		else if (_checkObject!=null)
-		{
-			_checkObject.transform.position = _checkPos;
-		}
-		
 
 		// Annulation Oeil
 		if (_playerPos != new Vector3(0, 10000, 0) && _playerPos != _player.transform.position ||
@@ -152,6 +151,11 @@ public class PlayerLook : MonoBehaviour
 				if (!_playerOnEyePlace.onPlace || _checkObject.open)
 				{
 					_checkObject.codeTry.Clear();
+					foreach (GameObject item in _checkObject.codeTryObjects)
+					{
+						item.GetComponent<CheckDoor>()?.SetHighlight(false);
+					}
+					_checkObject.codeTryObjects.Clear();
 					_checkObject = null;
 					_fountainActive = false;
 					_eyeOn = false;
@@ -163,8 +167,13 @@ public class PlayerLook : MonoBehaviour
 			else if (_checkObject != null && _checkObject.GetType() != typeof(CheckFountain))
 			{
 				_checkObject.codeTry.Clear();
-				_checkObject.transform.position = _checkPos;
+				foreach (GameObject item in _checkObject.codeTryObjects)
+				{
+					item.GetComponent<CheckDoor>()?.SetHighlight(false);
+				}
+				_checkObject.codeTryObjects.Clear();
 				_checkObject = null;
+				_fountainActive = false;
 				_eyeOn = false;
 				this.gameObject.GetComponent<Eye>().EyeDeactivate();
 				_playerPos = new Vector3(0, 10000, 0);
@@ -212,6 +221,11 @@ public class PlayerLook : MonoBehaviour
 			}
 		}
 
-		
+		if (_checkObject != null && _checkObject.GetType() == typeof(CheckEye) && _eyeOn)
+		{
+			_checkObject.transform.position =
+				Vector3.MoveTowards(_checkObject.transform.position,
+									new Vector3(hit.point.x, hit.point.y, _checkObject.transform.position.z), 0.0005f);
+		}
 	}
 }
