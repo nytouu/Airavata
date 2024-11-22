@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerLook : MonoBehaviour
@@ -25,6 +26,7 @@ public class PlayerLook : MonoBehaviour
 		_player = FindFirstObjectByType<CharacterController>();
 		_inputManager = GameManager.GetManager<InputManager>();
 		_playerOnEyePlace = FindObjectOfType<PlayerOnEyePlace>();
+		_lookDistance = Mathf.Infinity;
 	}
 
 	// Update is called once per frame
@@ -113,7 +115,7 @@ public class PlayerLook : MonoBehaviour
 			{
 				_checkObject = hit.transform.GetComponent<CheckPillar>();
 				_checkObject.timer += Time.deltaTime;
-				if (!_eyeOn && _player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
+				if (!_eyeOn)
 				{
 					if (_checkObject.timer >= _checkObject.timeLimit)
 					{
@@ -134,20 +136,17 @@ public class PlayerLook : MonoBehaviour
 			
 		}
 		//Raycast ne touche rien
-		else if (_checkObject!=null)
+		else if (_checkObject!=null && _checkObject.GetType() == typeof(CheckEye))
 		{
 			_checkObject.transform.position = _checkPos;
 		}
-		
-
 		// Annulation Oeil
-		if (_playerPos != new Vector3(0, 10000, 0) && _playerPos != _player.transform.position ||
+		if (_playerPos != new Vector3(0, 10000, 0) && Mathf.Abs(_player.transform.position.sqrMagnitude - _playerPos.sqrMagnitude) > 700||
 			_checkObject != null && _checkObject.open)
 		{
 			_checkObject.timer = 0.0f;
 
-			if (_checkObject != null && _checkObject.GetType() == typeof(CheckFountain) ||
-				_checkObject != null && _checkObject.GetType() == typeof(CheckPillar))
+			if (_checkObject != null && _checkObject.GetType() == typeof(CheckFountain))
 			{
 				if (!_playerOnEyePlace.onPlace || _checkObject.open)
 				{
@@ -159,11 +158,13 @@ public class PlayerLook : MonoBehaviour
 					_playerPos = new Vector3(0, 10000, 0);
 				}
 			}
-
 			else if (_checkObject != null && _checkObject.GetType() != typeof(CheckFountain))
 			{
-				_checkObject.codeTry.Clear();
-				_checkObject.transform.position = _checkPos;
+				if (_checkObject.GetType() == typeof(CheckEye))
+				{
+					_checkObject.codeTry.Clear();
+					_checkObject.transform.position = _checkPos;
+				}
 				_checkObject = null;
 				_eyeOn = false;
 				this.gameObject.GetComponent<Eye>().EyeDeactivate();
@@ -172,7 +173,7 @@ public class PlayerLook : MonoBehaviour
 		}
 
 		// Eye Range
-		if (_player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
+		/*if (_player.gameObject.GetComponent<PlayerOnEyePlace>().onPlace)
 		{
 			if (_player.gameObject.GetComponent<PlayerOnEyePlace>().eyePlace.GetType() == typeof(EyePlacePillar))
 			{
@@ -186,7 +187,7 @@ public class PlayerLook : MonoBehaviour
 		else
 		{
 			_lookDistance = 1.65f;
-		}
+		}*/
 		// Detection Input Fontaine
 		if (_fountainActive && _checkObject.GetType() == typeof(CheckFountain))
 		{
